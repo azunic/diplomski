@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema(
     },
     productCategory: { type: mongoose.Schema.Types.ObjectId, ref: 'ProductCategory' },
     productVariants: [productVariant],
-    brand: { type: mongoose.Schema.Types.ObjectId, ref: 'Brand', required: false },
+    brand: { type: mongoose.Schema.Types.ObjectId, ref: 'Brand' },
   },
   { timestamps: true },
 );

@@ -5,9 +5,14 @@ const errorHandler = require('errorhandler');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+//routes
 const users = require('./routes/api/users');
 const test = require('./routes/api/test');
+const brands = require('./routes/api/brands');
+
 const config = require('./config/config');
+
+
 
 const app = express();
 app.use(logger('dev'));
@@ -43,6 +48,7 @@ mongoose.connection.on('error', (err) => {
 // Routes
 app.use('/api/users', users);
 app.use('/api/test', test);
+app.use('/api/brands', brands);
 
 if (config.nodeEnv === 'development') {
   // only use in development

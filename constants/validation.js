@@ -4,6 +4,7 @@ module.exports = Object.freeze({
   emailAlreadyExist: 'Email already exists!',
   emailNotFound: 'Email not found!',
   userNotFound: 'User not found!',
+  nameIsInvalid: 'Name is invalid!',
   userErrorOcurred: 'An error occurred while finding the user!',
   passwordIsRequired: 'Password is required!',
   firstNameIsRequired: 'First name is required!',
