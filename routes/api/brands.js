@@ -31,7 +31,6 @@ router.get('/:id', async (req, res) => {
 //POST / - kreiraj novog branda
 router.post('/', async (req, res) => {
     try {
-        console.log("**********", req.body);
         const { errors, isValid } = validateBrand(req.body);
         if (!isValid) {
             return res.status(400).json(errors);
@@ -49,13 +48,31 @@ router.post('/', async (req, res) => {
 });
 
 //PUT /:id - edit branda
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
+    try {
+        const editBrand = await Brand.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        await editBrand.save();
+        res.send(editBrand);
+
+    } catch (err) {
+        console.error("An error occurred on brands edit", err);
+        res.status(500).send(err);
+    }
 
 });
 
-
 //DELETE /:id - delete branda
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
+
+    try {
+
+        const deleteBrand = await Brand.findByIdAndDelete(req.params.id)
+        res.send(deleteBrand);
+
+    } catch (err) {
+        console.log("An error occurred on brands delete", err);
+        res.status(500).send(err);
+    }
 
 });
 
