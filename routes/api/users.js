@@ -10,6 +10,7 @@ const validateRegisterInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
 const verifyToken = require('../../middleware/verifyToken');
 const validationMessages = require('../../constants/validation');
+const validateUser = require('../../validation/user');
 
 // Load User model
 const User = require('../../models/User');
@@ -109,4 +110,62 @@ router.get('/me', verifyToken, (req, res) => {
   });
 });
 
+
+
+//CRUD FOR USERS
+
+//GET / - dohvati sve korisnike
+router.get('/', async (req, res) => {
+
+  try {
+    const allUsers = await User.find({});
+    res.send(allUsers);
+  } catch (err) {
+    console.error("An error occurred on users get all", err);
+    res.status(500).send(err);
+  }
+
+});
+
+
+//GET /:id - dohvati jednog korisnika 
+router.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.send(user);
+  } catch (err) {
+    console.error("An error occurred on users get one", err);
+    res.status(500).send(err);
+  }
+});
+
+//PUT /:id - edit korisnika
+router.put('/:id', async (req, res) => {
+  try {
+    const editUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    await editUser.save();
+    res.send(editUser);
+
+  } catch (err) {
+    console.error("An error occurred on users edit", err);
+    res.status(500).send(err);
+  }
+
+});
+
+
+//DELETE /:id - delete korisnika
+router.delete('/:id', async (req, res) => {
+
+  try {
+
+    const deleteUser = await User.findByIdAndDelete(req.params.id)
+    res.send(deleteUser);
+
+  } catch (err) {
+    console.log("An error occurred on users delete", err);
+    res.status(500).send(err);
+  }
+
+});
 module.exports = router;

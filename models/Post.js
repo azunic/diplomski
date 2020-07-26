@@ -6,6 +6,7 @@ const postSchema = new mongoose.Schema(
     title: { type: String, required: true },
     isReview: { type: Boolean, required: true },
     reviewRating: { type: Number }, // number of stars
+    imageUrl: { type: String },
     product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: false },
   },
   { timestamps: true },

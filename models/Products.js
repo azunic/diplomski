@@ -11,6 +11,7 @@ const productVariant = new mongoose.Schema({
 
 const productSchema = new mongoose.Schema(
   {
+
     name: { type: String, required: true },
     image: { type: String, required: true },
     reviews: {
@@ -26,3 +27,5 @@ const productSchema = new mongoose.Schema(
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
+
+
