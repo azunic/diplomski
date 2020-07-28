@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-
-const GENDERS = ['Male', 'Female', 'Other'];
+const constants = require('../constants/database');
 
 const addressSchema = new mongoose.Schema({
   streetNumber: Number,
@@ -17,7 +16,7 @@ const userSchema = new mongoose.Schema(
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     dateOfBirth: { type: Date },
-    gender: { type: String, enum: Object.values(GENDERS) },
+    gender: { type: String, enum: Object.values(constants.GENDERS) },
     username: { type: String, required: true },
     addresses: [addressSchema],
     wishListedProducts: {

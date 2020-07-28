@@ -9,6 +9,7 @@ const cors = require('cors');
 const users = require('./routes/api/users');
 const test = require('./routes/api/test');
 const brands = require('./routes/api/brands');
+const mainCategories = require('./routes/api/mainCategories');
 
 const config = require('./config/config');
 
@@ -49,6 +50,7 @@ mongoose.connection.on('error', (err) => {
 app.use('/api/users', users);
 app.use('/api/test', test);
 app.use('/api/brands', brands);
+app.use('/api/main-Categories', mainCategories)
 
 if (config.nodeEnv === 'development') {
   // only use in development

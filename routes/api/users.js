@@ -10,7 +10,7 @@ const validateRegisterInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
 const verifyToken = require('../../middleware/verifyToken');
 const validationMessages = require('../../constants/validation');
-const validateUser = require('../../validation/user');
+
 
 // Load User model
 const User = require('../../models/User');
@@ -142,10 +142,10 @@ router.get('/:id', async (req, res) => {
 //PUT /:id - edit korisnika
 router.put('/:id', async (req, res) => {
   try {
+    //todo obrisati iz body-ija password i email
     const editUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
     await editUser.save();
     res.send(editUser);
-
   } catch (err) {
     console.error("An error occurred on users edit", err);
     res.status(500).send(err);
@@ -168,4 +168,5 @@ router.delete('/:id', async (req, res) => {
   }
 
 });
+
 module.exports = router;

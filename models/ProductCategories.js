@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const constants = require('../constants/database');
 
 const productCategorySchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    mainCategory: { type: mongoose.Schema.Types.ObjectId, ref: 'MainCategory' },
+    name: { type: String, enum: Object.values(constants.PRODUCT_CATEGORIES) },
   },
   { timestamps: true },
 );
