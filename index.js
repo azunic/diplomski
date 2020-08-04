@@ -12,6 +12,7 @@ const brands = require('./routes/api/brands');
 const mainCategories = require('./routes/api/mainCategories');
 const productCategories = require('./routes/api/productCategories');
 const productSubCategories = require('./routes/api/productSubCategories');
+const post = require('./routes/api/post');
 
 
 const config = require('./config/config');
@@ -57,6 +58,7 @@ app.use('/api/brands', brands);
 app.use('/api/main-categories', mainCategories);
 app.use('/api/product-categories', productCategories);
 app.use('/api/product-sub-categories', productSubCategories);
+app.use('/api/post', post);
 
 if (config.nodeEnv === 'development') {
   // only use in development
