@@ -13,14 +13,13 @@ function validatePost(data) {
         errors.text = validationMessages.textIsInvalid;
     }
     //title check
-    if
-        (Validator.isEmpty(data.title)) {
+    if (Validator.isEmpty(data.title)) {
         errors.title = validationMessages.titleisInvalid;
     }
 
     // is Review check
-    if (Validator.isEmpty(data.title)) {
-        errors.isReview = validationMessages.isreviewiIsnvalid;
+    if (Validator.isEmpty(data.isReview)) {
+        errors.isReview = validationMessages.isReviewiIsInvalid;
     }
 
     return {

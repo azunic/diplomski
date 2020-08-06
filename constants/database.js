@@ -33,7 +33,7 @@ const PRODUCT_CATEGORIES = [
     'Styling',
     'Šamponi',
     'Regeneratori',
-    'Boje za kosu,',
+    'Boje za kosu',
 
     // Make up
     'Oči',

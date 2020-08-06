@@ -4,9 +4,6 @@ const validatePost = require('../../validation/post');
 const Post = require('../../models/Post');
 
 
-module.exports = router;
-
-
 //GET / - dohvati sve postove
 router.get('/', async (req, res) => {
 
@@ -39,11 +36,14 @@ router.post('/', async (req, res) => {
         if (!isValid) {
             return res.status(400).json(errors);
         }
-
+        const { text, title, isReview, reviewRating, imageUrl, product } = req.body;
         const newPost = Post({
-            text: req.body.text, title: req.body.title, isReview: req.body.isReview,
-            reviewRating: req.body.reviewRating,
-            imageUrl: req.body.imageUrl, product: req.body.product
+            text: text,
+            title: title,
+            isReview: isReview,
+            reviewRating: reviewRating,
+            imageUrl: imageUrl,
+            product: product
         });
         await newPost.save();
         res.send(newPost);
