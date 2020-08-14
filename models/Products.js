@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const constants = require('../constants/database');
 
+
 const productVariant = new mongoose.Schema({
   name: String,
   price: Number,
