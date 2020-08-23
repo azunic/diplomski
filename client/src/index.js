@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '../node_modules/antd/dist/antd.css';
 import './styles/main.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -29,13 +30,11 @@ sagaMiddleware.run(watchAuth);
 sagaMiddleware.run(watchWebshop);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root'),
 );
 

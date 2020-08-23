@@ -66,7 +66,7 @@ router.post('/login', (req, res) => {
   }).then((user) => {
     if (!user) {
       return res.status(404).json({
-        emailnotfound: validationMessages.emailNotFound,
+        reason: validationMessages.emailNotFound,
       });
     }
 
@@ -75,7 +75,7 @@ router.post('/login', (req, res) => {
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
         const payload = {
-          id: user.id,
+          user_id: user.id,
           name: user.firstName,
         };
 

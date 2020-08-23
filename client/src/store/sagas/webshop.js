@@ -6,7 +6,7 @@ import * as actions from '../actions/index';
 export function* fetchProducts(action) {
   try {
   } catch (error) {
-    console.log("fetchProducts", err);
+    console.log("fetchProducts", error);
     return null;
   }
 }

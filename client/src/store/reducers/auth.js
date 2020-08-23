@@ -39,6 +39,10 @@ const authLogout = (state, action) => {
   return updateObject(state, { token: null });
 };
 
+const errorConfirmed = (state, action) => {
+  return updateObject(state, { error: null });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.AUTH_START:
@@ -51,6 +55,8 @@ const reducer = (state = initialState, action) => {
       return authFail(state, action);
     case actionTypes.AUTH_LOGOUT:
       return authLogout(state, action);
+    case actionTypes.ERROR_CONFIRMED:
+      return errorConfirmed(state, action);
     default:
       return state;
   }

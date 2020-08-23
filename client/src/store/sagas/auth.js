@@ -55,7 +55,7 @@ export function* authLoginUserSaga(action) {
 
     yield put(actions.authSuccess(response.data.token));
   } catch (error) {
-    yield put(actions.authFail(error.response.data.error));
+    yield put(actions.authFail(error.response.data.reason));
   }
 }
 

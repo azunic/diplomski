@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Navigation from './hoc/navigation/navigation';
 import HomePage from './pages/HomePage';
-import AuthPage from './pages/AuthPage';
+import AuthPage from './pages/auth/AuthPage';
 import NotExistPage from './pages/NotExistPage';
 
 import * as actions from './store/actions/index';
@@ -15,22 +15,36 @@ class App extends Component {
   }
   render() {
     const { isAuthenticated } = this.props;
+    console.log('isAuthenticated', isAuthenticated);
 
-    let routes = (
+    const authRoutes = (
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/home" component={HomePage} />
-        <Route exact path="/auth" component={AuthPage} />
+        <Route path="*" component={NotExistPage} />
+      </Switch>
+    );
+
+    const unAuthRoutes = (
+      <Switch>
+        <Route exact path="/" component={() => <AuthPage formType="login" />} />
+        <Route exact path="/login" component={() => <AuthPage formType="login" />} />
+        <Route exact path="/signup" component={() => <AuthPage formType="signup" />} />
+        <Route exact path="/forgot" component={() => <AuthPage formType="forgot" />} />
         <Route path="*" component={NotExistPage} />
       </Switch>
     );
 
     return (
       <>
-        <Navigation />
-        <main>
-          <section>{routes}</section>
-        </main>
+        {isAuthenticated ? (
+          <>
+            <Navigation />
+            <main className="main">{authRoutes}</main>
+          </>
+        ) : (
+            <main>{unAuthRoutes}</main>
+          )}
       </>
     );
   }

@@ -26,6 +26,12 @@ export const authFail = (error) => {
   };
 };
 
+export const errorConfirmed = () => {
+  return {
+    type: actionTypes.ERROR_CONFIRMED,
+  };
+};
+
 export const logout = () => {
   return {
     type: actionTypes.AUTH_INITIATE_LOGOUT,
