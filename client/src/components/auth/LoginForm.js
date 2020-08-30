@@ -2,11 +2,11 @@ import React from 'react';
 import { Form, Input, Button, Checkbox, Col, Row, Modal } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import getIcon from '../../utils/iconsLoader';
-
+import { withRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/index';
 
-export default function Login() {
+function Login(props) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
 
@@ -14,7 +14,9 @@ export default function Login() {
     dispatch(actions.authLogin(values.email, values.password));
   };
 
-  const goToSignup = () => {};
+  const goToSignup = () => {
+    props.history.push('/signup');
+  };
   const goToForgotPassword = () => {};
 
   const errorModal = () => {
@@ -82,3 +84,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default withRouter(Login);

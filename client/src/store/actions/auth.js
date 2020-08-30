@@ -1,4 +1,4 @@
-import * as actionTypes from "./actionTypes";
+import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
   return {
@@ -44,20 +44,15 @@ export const logoutSucceed = () => {
   };
 };
 
-export const authRegister = (
-  firstName,
-  lastName,
-  dateOfBirth,
-  email,
-  password
-) => {
+export const authRegister = (firstName, lastName, email, password, repeatPassword, username) => {
   return {
     type: actionTypes.AUTH_USER_REGISTER,
-    firstName: firstName,
-    lastName: lastName,
-    dateOfBirth: dateOfBirth,
-    email: email,
-    password: password,
+    firstName,
+    lastName,
+    email,
+    password,
+    repeatPassword,
+    username,
   };
 };
 

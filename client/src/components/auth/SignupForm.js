@@ -1,45 +1,66 @@
 import React from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Tooltip, Checkbox, Modal } from 'antd';
 import getIcon from '../../utils/iconsLoader';
-
-import { useDispatch } from 'react-redux';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/index';
 
+import { withRouter } from 'react-router';
+
 const layout = {
-  labelCol: { offset: 4, span: 4 },
+  labelCol: { offset: 2, span: 6 },
   wrapperCol: { span: 12 },
 };
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
-export default function Login() {
+
+function Signup(props) {
   const dispatch = useDispatch();
+  const error = useSelector((state) => state.auth.error);
 
   const onFinish = (values) => {
     console.log('Success:', values);
-    dispatch(actions.authLogin(values.email, values.password));
+    const { firstName, lastName, email, password, repeatPassword, username } = values;
+    dispatch(actions.authRegister(firstName, lastName, email, password, repeatPassword, username));
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const goToLogin = () => {
+    props.history.push('/login');
   };
 
-  const renderSignupForm = () => {};
+  const errorModal = () => {
+    Modal.error({
+      title: 'Sign up failed',
+      content: error,
+      onOk() {
+        dispatch(actions.errorConfirmed());
+      },
+    });
+  };
 
   return (
     <div className="auth-form">
       <div className="auth-form-wrapper">
         <div className="auth-form-title">
           <img src={getIcon('logo')}></img>
-          <span>Beauty Spot</span>
+          <span>Signup - Beauty Spot</span>
         </div>
-        <Form
-          {...layout}
-          name="basic"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
+        <Form {...layout} name="basic" initialValues={{ remember: true }} onFinish={onFinish}>
+          <Form.Item
+            name="firstName"
+            label="First name"
+            rules={[{ required: true, message: 'Please input your first name!' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="lastName"
+            label="Last name"
+            rules={[{ required: true, message: 'Please input your last name!' }]}
+          >
+            <Input />
+          </Form.Item>
           <Form.Item
             label="Email"
             name="email"
@@ -58,16 +79,72 @@ export default function Login() {
           </Form.Item>
 
           <Form.Item
-            label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
+            label="Password"
+            rules={[
+              {
+                required: true,
+                message: 'Please input your password!',
+              },
+            ]}
+            hasFeedback
           >
-            <Input.Password autoComplete="true" />
+            <Input.Password offset={4} span={6} />
           </Form.Item>
 
+          <Form.Item
+            name="repeatPassword"
+            label="Repeat Password"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please confirm your password!',
+              },
+              ({ getFieldValue }) => ({
+                validator(rule, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject('The two passwords that you entered do not match!');
+                },
+              }),
+            ]}
+          >
+            <Input.Password offset={4} span={6} />
+          </Form.Item>
+
+          <Form.Item
+            name="username"
+            label={
+              <span>
+                Username&nbsp;
+                <Tooltip title="What do you want others to call you?">
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </span>
+            }
+            rules={[{ required: true, message: 'Please input your username!', whitespace: true }]}
+          >
+            <Input offset={4} span={6} />
+          </Form.Item>
+
+          <Form.Item
+            name="agreement"
+            valuePropName="checked"
+            rules={[
+              { validator: (_, value) => (value ? Promise.resolve() : Promise.reject('Should accept agreement')) },
+            ]}
+            {...tailLayout}
+          >
+            <Checkbox>
+              I have read the <a href="">agreement</a>
+            </Checkbox>
+          </Form.Item>
           <Form.Item {...tailLayout}>
-            <Button type="link" style={{ padding: 0 }} onClick={renderSignupForm}>
-              Don't have an account? Sign up
+            <Button type="link" style={{ padding: 0 }} onClick={goToLogin}>
+              Have an account? Click here to log in
             </Button>
           </Form.Item>
 
@@ -77,7 +154,10 @@ export default function Login() {
             </Button>
           </Form.Item>
         </Form>
+        {error && errorModal()}
       </div>
     </div>
   );
 }
+
+export default withRouter(Signup);

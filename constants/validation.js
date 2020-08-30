@@ -1,6 +1,7 @@
 module.exports = Object.freeze({
   emailIsRequired: 'Email is required!',
   emailIsInvalid: 'Email is invalid!',
+  emailConfirmationTokenNotFound: 'Email confirmation token is invalid!',
   emailAlreadyExist: 'Email already exists!',
   emailNotFound: 'Email not found!',
   userNotFound: 'User not found!',

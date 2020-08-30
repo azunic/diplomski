@@ -1,6 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { nanoid } = require('nanoid');
+
+const EmailService = require('../../services/emailService');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -11,7 +14,6 @@ const validateLoginInput = require('../../validation/login');
 const verifyToken = require('../../middleware/verifyToken');
 const validationMessages = require('../../constants/validation');
 
-
 // Load User model
 const User = require('../../models/User');
 
@@ -21,21 +23,26 @@ router.post('/signup', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({
-    email: req.body.email,
-  }, { password: 0 }).then((user) => {
+  User.findOne(
+    {
+      email: req.body.email,
+    },
+    { password: 0 },
+  ).then((user) => {
     if (user) {
       return res.status(400).json({
         email: validationMessages.emailAlreadyExist,
       });
     }
+    const emailConfirmationToken = nanoid();
     const newUser = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      dateOfBirth: new Date(),
+      dateOfBirth: null,
       email: req.body.email,
       password: req.body.password,
-      username: req.body.username
+      username: req.body.username,
+      emailConfirmationToken,
     });
 
     // Hash password before saving in database
@@ -45,15 +52,37 @@ router.post('/signup', (req, res) => {
         newUser.password = hash;
         newUser
           .save()
-          .then((user) => res.json(user))
+          .then((user) => {
+            EmailService.sendConfirmationEmail(req.body.email, emailConfirmationToken);
+            return res.json(user);
+          })
           .catch((err) => console.log(err));
       });
     });
   });
 });
 
-router.post('/login', (req, res) => {
+router.get('/confirm-email', async (req, res) => {
+  const { emailConfirmationToken, email } = req.query;
+  console.log('email', email);
+  console.log('emailConfirmationToken', emailConfirmationToken);
+  const user = await User.findOne({ email, emailConfirmationToken });
 
+  if (!user) {
+    return res.status(404).json({
+      reason: validationMessages.emailConfirmationTokenNotFound,
+    });
+  }
+
+  await User.findOneAndUpdate({ emailConfirmationToken }, { emailConfirmationToken: '' });
+
+  res.json({
+    success: true,
+    message: 'Email confirmed!',
+  });
+});
+
+router.post('/login', (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
@@ -83,7 +112,7 @@ router.post('/login', (req, res) => {
           payload,
           config.secret,
           {
-            expiresIn: 86400 // expires in 24 hours
+            expiresIn: 86400, // expires in 24 hours
           },
           (err, token) => {
             res.json({
@@ -110,31 +139,26 @@ router.get('/me', verifyToken, (req, res) => {
   });
 });
 
-
-
 //CRUD FOR USERS
 
 //GET / - dohvati sve korisnike
 router.get('/', async (req, res) => {
-
   try {
     const allUsers = await User.find({});
     res.send(allUsers);
   } catch (err) {
-    console.error("An error occurred on users get all", err);
+    console.error('An error occurred on users get all', err);
     res.status(500).send(err);
   }
-
 });
 
-
-//GET /:id - dohvati jednog korisnika 
+//GET /:id - dohvati jednog korisnika
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     res.send(user);
   } catch (err) {
-    console.error("An error occurred on users get one", err);
+    console.error('An error occurred on users get one', err);
     res.status(500).send(err);
   }
 });
@@ -147,26 +171,20 @@ router.put('/:id', async (req, res) => {
     await editUser.save();
     res.send(editUser);
   } catch (err) {
-    console.error("An error occurred on users edit", err);
+    console.error('An error occurred on users edit', err);
     res.status(500).send(err);
   }
-
 });
-
 
 //DELETE /:id - delete korisnika
 router.delete('/:id', async (req, res) => {
-
   try {
-
-    const deleteUser = await User.findByIdAndDelete(req.params.id)
+    const deleteUser = await User.findByIdAndDelete(req.params.id);
     res.send(deleteUser);
-
   } catch (err) {
-    console.log("An error occurred on users delete", err);
+    console.log('An error occurred on users delete', err);
     res.status(500).send(err);
   }
-
 });
 
 module.exports = router;

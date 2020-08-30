@@ -1,12 +1,12 @@
-import { put, call } from "redux-saga/effects";
-import jwt_decode from "jwt-decode";
-import * as api from "../../api/api";
-import * as actions from "../actions/index";
+import { put, call } from 'redux-saga/effects';
+import jwt_decode from 'jwt-decode';
+import * as api from '../../api/api';
+import * as actions from '../actions/index';
 
 export function* logoutSaga(action) {
-  yield call([localStorage, "removeItem"], "token");
-  yield call([localStorage, "removeItem"], "exp");
-  yield call([localStorage, "removeItem"], "user_id");
+  yield call([localStorage, 'removeItem'], 'token');
+  yield call([localStorage, 'removeItem'], 'exp');
+  yield call([localStorage, 'removeItem'], 'user_id');
   yield put(actions.logoutSucceed());
 }
 
@@ -15,9 +15,10 @@ export function* authRegisterUserSaga(action) {
   const authData = {
     email: action.email,
     password: action.password,
-    first_name: action.firstName,
-    last_name: action.lastName,
-    date_of_birth: action.dateOfBirth,
+    repeatPassword: action.repeatPassword,
+    firstName: action.firstName,
+    lastName: action.lastName,
+    username: action.username,
   };
   try {
     yield call(api.signup, authData);
@@ -33,7 +34,7 @@ export function* authRegisterUserSaga(action) {
 
     yield put(actions.registerSuccess());
   } catch (error) {
-    yield put(actions.authFail(error.response.data.error));
+    yield put(actions.authFail(error.response.data.reason));
   }
 }
 
@@ -45,13 +46,13 @@ export function* authLoginUserSaga(action) {
   };
   try {
     const response = yield call(api.login, authData);
-    console.log("response", response);
-    yield localStorage.setItem("token", response.data.token);
+    console.log('response', response);
+    yield localStorage.setItem('token', response.data.token);
 
     const decoded = jwt_decode(response.data.token);
-    console.log("decoded", decoded);
-    yield localStorage.setItem("exp", decoded.exp);
-    yield localStorage.setItem("user_id", decoded.user_id);
+    console.log('decoded', decoded);
+    yield localStorage.setItem('exp', decoded.exp);
+    yield localStorage.setItem('user_id', decoded.user_id);
 
     yield put(actions.authSuccess(response.data.token));
   } catch (error) {
@@ -60,21 +61,17 @@ export function* authLoginUserSaga(action) {
 }
 
 export function* authCheckStateSaga(action) {
-  const token = yield localStorage.getItem("token");
+  const token = yield localStorage.getItem('token');
   if (!token) {
     yield put(actions.logout());
   } else {
-    const expirationDate = yield new Date(localStorage.getItem("exp"));
+    const expirationDate = yield new Date(localStorage.getItem('exp'));
     if (expirationDate <= new Date()) {
       yield put(actions.logout());
     } else {
-      const userId = yield localStorage.getItem("user_id");
+      const userId = yield localStorage.getItem('user_id');
       yield put(actions.authSuccess(token, userId));
-      yield put(
-        actions.checkAuthTimeout(
-          (expirationDate.getTime() - new Date().getTime()) / 1000
-        )
-      );
+      yield put(actions.checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
     }
   }
 }
