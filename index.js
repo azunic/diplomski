@@ -13,12 +13,12 @@ const mainCategories = require('./routes/api/mainCategories');
 const productCategories = require('./routes/api/productCategories');
 const productSubCategories = require('./routes/api/productSubCategories');
 const post = require('./routes/api/post');
-
+const couponCode = require('./routes/api/couponCode');
+const notifications = require('./routes/api/notifications');
+const products = require('./routes/api/products');
 
 const config = require('./config/config');
 const ProductCategory = require('./models/ProductCategories');
-
-
 
 const app = express();
 app.use(logger('dev'));
@@ -59,6 +59,9 @@ app.use('/api/main-categories', mainCategories);
 app.use('/api/product-categories', productCategories);
 app.use('/api/product-sub-categories', productSubCategories);
 app.use('/api/post', post);
+app.use('/api/coupon-code', couponCode);
+app.use('/api/notifications', notifications);
+app.use('/api/products', products);
 
 if (config.nodeEnv === 'development') {
   // only use in development

@@ -16,4 +16,7 @@ module.exports = Object.freeze({
   passwordIncorrect: 'Password incorrect!',
   noTokenProvided: 'No token provided.',
   tokenFailAuth: 'Failed to authenticate token.',
+  codeIsInvalid: 'Code is invalid.',
+  notificationTitleisInvalid: 'Notification is invalid',
+  notificationsType: 'Notifications in invalid',
 });
