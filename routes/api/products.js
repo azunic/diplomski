@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const validateProducts = require('../../validation/products');
 const Products = require('../../models/Products');
+const Brand = require('../../models/Brand');
 
 //GET / - dohvati sve proizvode
 router.get('/', async (req, res) => {
@@ -32,13 +33,18 @@ router.post('/', async (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    const { name, image, productVariants } = req.body;
+    const { name, image, productVariant, productSubCategory, brand } = req.body;
     const newProducts = Products({
-      name: name,
-      image: image,
-      productVariants: productVariants,
+      name,
+      image,
+      productVariant,
+      productSubCategory,
+      brand,
     });
-    await newProducts.save();
+    const newProduct = await newProducts.save();
+    console.log('after save newProduct', newProduct);
+    await Brand.findByIdAndUpdate(brand, { $addToSet: { products: [newProduct._id] } });
+
     res.send(newProducts);
   } catch (err) {
     console.error('An error occurred on products create', err);

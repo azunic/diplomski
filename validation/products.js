@@ -6,7 +6,6 @@ function validateProducts(data) {
   const errors = {};
   data.name = !isEmpty(data.name) ? data.name : '';
   data.image = !isEmpty(data.image) ? data.image : '';
-  data.productVariants = !isEmpty(data.productVariants) ? data.productVariants : '';
 
   if (Validator.isEmpty(data.name)) {
     errors.text = validationMessages.nameIsInvalid;
@@ -14,11 +13,6 @@ function validateProducts(data) {
   //image check
   if (Validator.isEmpty(data.image)) {
     errors.title = validationMessages.imageisInvalid;
-  }
-
-  // products variant check
-  if (Validator.isEmpty(data.productVariants)) {
-    errors.isReview = validationMessages.productsVariantsiIsInvalid;
   }
 
   return {

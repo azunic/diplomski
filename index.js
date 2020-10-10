@@ -16,6 +16,7 @@ const post = require('./routes/api/post');
 const couponCode = require('./routes/api/couponCode');
 const notifications = require('./routes/api/notifications');
 const products = require('./routes/api/products');
+const productVariant = require('./routes/api/productVariant');
 
 const config = require('./config/config');
 const ProductCategory = require('./models/ProductCategories');
@@ -62,6 +63,7 @@ app.use('/api/post', post);
 app.use('/api/coupon-code', couponCode);
 app.use('/api/notifications', notifications);
 app.use('/api/products', products);
+app.use('/api/product-variant', productVariant);
 
 if (config.nodeEnv === 'development') {
   // only use in development

@@ -105,6 +105,8 @@ const PRODUCT_SUBCATEGORIES = [
   // Kosa - Boje za kosu
   'Privremene boje',
   'Trajne boje',
+  'Šampon za kosu',
+  'Maska za kosu',
 
   // Makeup - Oči
   'Eyelineri',
