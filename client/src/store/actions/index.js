@@ -9,7 +9,7 @@ export {
   authLogin,
   checkAuthTimeout,
   authCheckState,
-  errorConfirmed
+  errorConfirmed,
 } from './auth';
 
-export { fetchProducts } from './webshop';
+export { fetchProducts, fetchProductsSuccess, fetchProductsFailed } from './webShop';

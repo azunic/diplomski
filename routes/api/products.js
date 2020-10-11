@@ -7,7 +7,7 @@ const Brand = require('../../models/Brand');
 //GET / - dohvati sve proizvode
 router.get('/', async (req, res) => {
   try {
-    const allProducts = await Products.find({});
+    const allProducts = await Products.find({}).populate('brand', '_id name imageUrl');
     res.send(allProducts);
   } catch (err) {
     console.error('An error occurred on products get all', err);

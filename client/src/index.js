@@ -11,8 +11,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 
 import authReducer from './store/reducers/auth';
-import webshopReducer from './store/reducers/webshop';
-import { watchAuth, watchWebshop } from './store/sagas';
+import webShopReducer from './store/reducers/webShop';
+import { watchAuth, watchWebShop } from './store/sagas';
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
@@ -20,14 +20,14 @@ const composeEnhancers =
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
-  webshop: webshopReducer,
+  webShop: webShopReducer,
   auth: authReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(watchAuth);
-sagaMiddleware.run(watchWebshop);
+sagaMiddleware.run(watchWebShop);
 
 ReactDOM.render(
   <Provider store={store}>

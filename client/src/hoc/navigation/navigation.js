@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProfileMenu from './profileMenu/profileMenu';
 import SideDrawer from './sideDrawer/sideDrawer';
 import getIcon from '../../utils/iconsLoader';
 import isMobile from 'is-mobile';
 
-function Navigation() {
+import { withRouter } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+
+function Navigation(props) {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
+  const token = useSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    token && props.history.push('/home');
+  }, [token]);
 
   const toggleSideDrawer = () => {
     setSideDrawerOpen(!sideDrawerOpen);
@@ -47,4 +55,4 @@ function Navigation() {
   );
 }
 
-export default Navigation;
+export default withRouter(Navigation);

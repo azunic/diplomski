@@ -3,7 +3,7 @@ const router = express.Router();
 const validateCouponCode = require('../../validation/couponCode');
 const CouponCode = require('../../models/CouponCode');
 
-//dohvati sve kupon kodove
+// dohvati sve kupon kodove
 router.get('/', async (req, res) => {
   try {
     const allCouponCode = await CouponCode.find({});
@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
 //GET /:id - dohvati jedan kupon
 router.get('/:id', async (req, res) => {
   try {
-    const CouponCode = await findById(req.params.id);
-    res.send(CouponCode);
+    const couponCode = await CouponCode.findById(req.params.id);
+    res.send(couponCode);
   } catch (err) {
     console.error('An error occurred on coupon code get one', err);
     res.status(500).send(err);

@@ -5,7 +5,7 @@ const errorHandler = require('errorhandler');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-//routes
+// routes
 const users = require('./routes/api/users');
 const test = require('./routes/api/test');
 const brands = require('./routes/api/brands');
@@ -19,24 +19,12 @@ const products = require('./routes/api/products');
 const productVariant = require('./routes/api/productVariant');
 
 const config = require('./config/config');
-const ProductCategory = require('./models/ProductCategories');
 
 const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({ origin: '*' }));
-
-/* app.use((req, res, next) => {
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
-
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Pass to next layer of middleware
-  next();
-}); */
 
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -48,9 +36,6 @@ mongoose.connection.on('error', (err) => {
   console.log('%s MongoDB connection error. Please make sure MongoDB is running!');
   process.exit();
 });
-
-// app.use(passport.initialize());
-// require('./config/passport')(passport);
 
 // Routes
 app.use('/api/users', users);
@@ -69,7 +54,7 @@ if (config.nodeEnv === 'development') {
   // only use in development
   app.use(errorHandler());
 } else {
-  app.use((err, req, res, next) => {
+  app.use((err, _, res) => {
     console.error(err);
     res.status(500).send('Server Error!');
   });

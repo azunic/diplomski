@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../utils/utility';
 
 const initialState = {
-  products: [],
+  products: null,
   userProfile: null,
   searchTerm: '',
   isLoadingProducts: false,
@@ -19,7 +19,7 @@ const fetchProductsSuccess = (state, action) => {
 
 const fetchProductsFailed = (state, action) => {
   return updateObject(state, {
-    errorFetchProducts: true,
+    errorFetchProducts: action.error,
     isLoadingProducts: false,
   });
 };

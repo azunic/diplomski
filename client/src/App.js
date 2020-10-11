@@ -13,7 +13,8 @@ class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignup();
   }
-  render() {
+
+  renderContent = () => {
     const { isAuthenticated } = this.props;
     console.log('isAuthenticated', isAuthenticated);
 
@@ -35,18 +36,18 @@ class App extends Component {
       </Switch>
     );
 
-    return (
+    return isAuthenticated ? (
       <>
-        {isAuthenticated ? (
-          <>
-            <Navigation />
-            <main className="main">{authRoutes}</main>
-          </>
-        ) : (
-            <main>{unAuthRoutes}</main>
-          )}
+        <Navigation />
+        <main className="main">{authRoutes}</main>
       </>
+    ) : (
+      <main>{unAuthRoutes}</main>
     );
+  };
+
+  render() {
+    return this.renderContent();
   }
 }
 const mapStateToProps = (state) => {

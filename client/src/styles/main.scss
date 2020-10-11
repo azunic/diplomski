@@ -1,9 +1,11 @@
-@import './base/fonts.scss';
+@import './base/fonts';
 @import './base/settings';
-@import './base/base.scss';
+@import './base/base';
 
 //components
 @import './components/navigation';
+@import './components/product-card';
 
 //pages
-@import './pages/auth.scss';
+@import './pages/auth';
+@import './pages/home';
