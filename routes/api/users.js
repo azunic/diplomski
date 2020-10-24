@@ -16,6 +16,7 @@ const validationMessages = require('../../constants/validation');
 
 // Load User model
 const User = require('../../models/User');
+const Notification = require('../../models/notifications');
 
 router.post('/signup', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -130,13 +131,35 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.get('/me', verifyToken, (req, res) => {
-  User.findById(req.userId, { password: 0 }, (err, user) => {
-    if (err) return res.status(500).send(validationMessages.userErrorOcurred);
-    if (!user) return res.status(404).send(validationMessages.userNotFound);
+router.get('/me', verifyToken, async (req, res) => {
+  console.log('inside /me', req.userId);
+  try {
+    const user = await User.findById(req.userId, { password: 0 });
 
-    res.status(200).send(user);
-  });
+    const notificationCount = await Notification.countDocuments({ recipientId: req.userId, seen: false });
+
+    if (!user) {
+      return res.status(404).send(validationMessages.userNotFound);
+    }
+
+    const response = {
+      notificationCount: notificationCount,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      dateOfBirth: user.dateOfBirth,
+      gender: user.gender,
+      username: user.username,
+      wishListedProducts: user.wishListedProducts,
+      ownedProducts: user.ownedProducts,
+      //...user.toObject(),
+    };
+
+    res.send(response);
+  } catch (err) {
+    console.error('An error occurred on users get all', err);
+    res.status(500).send(err);
+  }
 });
 
 //CRUD FOR USERS

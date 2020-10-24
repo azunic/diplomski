@@ -8,6 +8,7 @@ const notificationSchema = new mongoose.Schema(
     notificationType: { type: String, enum: Object.values(constants.NOTIFICATION_TYPES) },
     notificationTitle: { type: String, enum: Object.values(constants.NOTIFICATION_TITLES) },
     entityId: { type: mongoose.Schema.Types.ObjectId },
+    seen: { type: Boolean, default: false },
     subEntityId: { type: mongoose.Schema.Types.ObjectId },
   },
   { timestamps: true },

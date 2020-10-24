@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 
+//products start
 export const fetchProducts = (category) => {
   return {
     type: actionTypes.FETCH_PRODUCTS,
@@ -20,3 +21,28 @@ export const fetchProductsFailed = (error) => {
     error,
   };
 };
+
+//products end
+
+//utilities start
+export const fetchNavigation = () => {
+  return {
+    type: actionTypes.FETCH_NAVIGATION,
+  };
+};
+
+export const fetchNavigationSuccess = (navigationItems) => {
+  return {
+    type: actionTypes.FETCH_NAVIGATION_SUCCESS,
+    navigationItems,
+  };
+};
+
+export const fetchNavigationFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_NAVIGATION_FAILED,
+    error,
+  };
+};
+
+//utilites end

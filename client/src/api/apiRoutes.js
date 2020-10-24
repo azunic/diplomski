@@ -8,3 +8,6 @@ export const USER_PROFILE = 'api/users/me';
 
 // products
 export const PRODUCTS = 'api/products';
+
+//navigation
+export const GET_NAVIGATION = 'api/utilities/getNavigation';

@@ -19,7 +19,7 @@ function verifyToken(req, res, next) {
     }
     console.log('decoded', decoded);
     // if everything good, save to request for use in other routes
-    req.userId = decoded.id;
+    req.userId = decoded.user_id;
     next();
   });
 }

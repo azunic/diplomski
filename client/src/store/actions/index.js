@@ -12,4 +12,11 @@ export {
   errorConfirmed,
 } from './auth';
 
-export { fetchProducts, fetchProductsSuccess, fetchProductsFailed } from './webShop';
+export {
+  fetchProducts,
+  fetchProductsSuccess,
+  fetchProductsFailed,
+  fetchNavigation,
+  fetchNavigationSuccess,
+  fetchNavigationFailed,
+} from './webShop';

@@ -12,3 +12,15 @@ export function* fetchProducts() {
     return null;
   }
 }
+
+// NAVIGATION
+
+export function* fetchNavigation() {
+  try {
+    const response = yield call(api.fetchNavigation);
+    yield put(actions.fetchNavigationSuccess(response.data));
+  } catch (error) {
+    yield put(actions.fetchNavigationFailed(error.response.data.reason));
+    return null;
+  }
+}

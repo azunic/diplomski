@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SideDrawerListItem from './sideDrawerListItem';
 import { ACCESSORIES_EXPANDABLE_ITEMS } from '../../../constants/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../../store/actions';
 
 function SideDrawer(props) {
   const { isMobile, sideDrawerOpen } = props;
+  const dispatch = useDispatch();
+  const navigationItems = useSelector((state) => state.webShop.navigationItems);
+  const error = useSelector((state) => state.webShop.errorNavigationItems);
+
+  useEffect(() => {
+    dispatch(actions.fetchNavigation());
+  }, []);
+
+  console.log('navigationItems', navigationItems);
 
   const displaySideDrawer = () => {
     if (!isMobile) {
@@ -11,11 +22,30 @@ function SideDrawer(props) {
     }
     return sideDrawerOpen;
   };
+
+  const renderNavigationItems = () => {
+    if (!navigationItems) {
+      return null;
+    }
+
+    const navItems = navigationItems.map((item) => (
+      <SideDrawerListItem
+        key={item.name}
+        icon={item.name}
+        text={item.name}
+        expandable={item.name !== 'Home' && item.name !== 'Brands'}
+        expandableItems={item.navItems}
+      />
+    ));
+    return navItems;
+  };
+
   return (
     <aside id="sidedrawer" className={`sidedrawer sidedrawer-${displaySideDrawer() ? 'active' : 'inactive'}`}>
       <div className="sidedrawer-menus">
         <ul className="sidedrawer-list">
-          <SideDrawerListItem icon="home" text="Home" />
+          {renderNavigationItems()}
+          {/* <SideDrawerListItem icon="home" text="Home" />
           <SideDrawerListItem icon="brands" text="Brands" />
           <SideDrawerListItem
             icon="Accessories"
@@ -24,19 +54,19 @@ function SideDrawer(props) {
             expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
           />
           <SideDrawerListItem
-            icon="perfumes"
+            icon="Mirisi"
             text="Mirisi"
             expandable={true}
             expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
           />
           <SideDrawerListItem
-            icon="drugstore"
+            icon="Drogerija"
             text="Drogerija"
             expandable={true}
             expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
           />
           <SideDrawerListItem
-            icon="hair"
+            icon="Kosa"
             text="Kosa"
             expandable={true}
             expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
@@ -48,11 +78,11 @@ function SideDrawer(props) {
             expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
           />
           <SideDrawerListItem
-            icon="care"
+            icon="Njega"
             text="Njega"
             expandable={true}
             expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
-          />
+          /> */}
         </ul>
         <div className="sidedrawer-list-divider"></div>
         <ul className="sidedrawer-list">

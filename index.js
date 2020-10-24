@@ -17,6 +17,7 @@ const couponCode = require('./routes/api/couponCode');
 const notifications = require('./routes/api/notifications');
 const products = require('./routes/api/products');
 const productVariant = require('./routes/api/productVariant');
+const utilities = require('./routes/api/utilities');
 
 const config = require('./config/config');
 
@@ -49,6 +50,7 @@ app.use('/api/coupon-code', couponCode);
 app.use('/api/notifications', notifications);
 app.use('/api/products', products);
 app.use('/api/product-variant', productVariant);
+app.use('/api/utilities', utilities);
 
 if (config.nodeEnv === 'development') {
   // only use in development

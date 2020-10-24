@@ -27,15 +27,15 @@ function getIcon(iconName) {
       return HomeSvg;
     case 'accessories':
       return AccessoriesSvg;
-    case 'perfumes':
+    case 'mirisi':
       return PerfumesSvg;
-    case 'drugstore':
+    case 'drogerija':
       return DrugstoreSvg;
-    case 'hair':
+    case 'kosa':
       return HairSvg;
     case 'makeup':
       return MakeupSvg;
-    case 'care':
+    case 'njega':
       return CareSvg;
     case 'swap':
       return SwapSvg;

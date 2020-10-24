@@ -5,6 +5,8 @@ export default function SideDrawerListItem(props) {
   const [expanded, setExpanded] = useState(false);
   const { icon, text, expandable, expandableItems } = props;
 
+  console.log('expandableItems', expandableItems);
+
   return (
     <li className="sidedrawer-list-item">
       <div className="sidedrawer-list-item-expandable" onClick={() => setExpanded(!expanded)}>
@@ -27,9 +29,9 @@ export default function SideDrawerListItem(props) {
               className={`sidedrawer-list-item-submenu-item ${
                 expanded && index === 0 ? 'sidedrawer-list-item-submenu-item-active' : ''
               }`}
-              key={Math.random().toString()}
+              key={item._id}
             >
-              <span className="sidedrawer-list-item-submenu-item-title">{item}</span>
+              <span className="sidedrawer-list-item-submenu-item-title">{item.name}</span>
             </li>
           ))}
         </ul>

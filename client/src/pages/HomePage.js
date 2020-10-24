@@ -14,7 +14,6 @@ function HomePage() {
 
   const renderProducts = () => {
     if (products && !error) {
-      console.log('***products', products);
       return products.map((p) => (
         <ProductCard key={p._id} name={p.name} image={p.image} brandName={p.brand.name} brandImage={p.brand.imageUrl} />
       ));
