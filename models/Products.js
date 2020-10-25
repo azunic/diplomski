@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const constants = require('../constants/database');
 
 const productSchema = new mongoose.Schema(
   {

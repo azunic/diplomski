@@ -24,7 +24,8 @@ export const fetchProductsFailed = (error) => {
 
 //products end
 
-//utilities start
+//region utilities
+
 export const fetchNavigation = () => {
   return {
     type: actionTypes.FETCH_NAVIGATION,
@@ -45,4 +46,28 @@ export const fetchNavigationFailed = (error) => {
   };
 };
 
-//utilites end
+//endregion
+
+// user profile start
+
+export const fetchUserProfile = () => {
+  return {
+    type: actionTypes.FETCH_USER_PROFILE,
+  };
+};
+
+export const fetchUserProfileSuccess = (userProfileData) => {
+  return {
+    type: actionTypes.FETCH_USER_PROFILE_SUCCESS,
+    userProfileData,
+  };
+};
+
+export const fetchUserProfileFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_USER_PROFILE_FAILED,
+    error,
+  };
+};
+
+// user profile end

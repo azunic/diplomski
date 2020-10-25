@@ -5,8 +5,6 @@ export default function SideDrawerListItem(props) {
   const [expanded, setExpanded] = useState(false);
   const { icon, text, expandable, expandableItems } = props;
 
-  console.log('expandableItems', expandableItems);
-
   return (
     <li className="sidedrawer-list-item">
       <div className="sidedrawer-list-item-expandable" onClick={() => setExpanded(!expanded)}>

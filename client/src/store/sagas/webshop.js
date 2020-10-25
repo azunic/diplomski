@@ -14,13 +14,24 @@ export function* fetchProducts() {
 }
 
 // NAVIGATION
-
 export function* fetchNavigation() {
   try {
     const response = yield call(api.fetchNavigation);
     yield put(actions.fetchNavigationSuccess(response.data));
   } catch (error) {
     yield put(actions.fetchNavigationFailed(error.response.data.reason));
+    return null;
+  }
+}
+
+//USER PROFILE
+export function* fetchUserProfile() {
+  try {
+    const response = yield call(api.fetchUserProfile);
+    console.log('response', response);
+    yield put(actions.fetchUserProfileSuccess(response.data));
+  } catch (error) {
+    yield put(actions.fetchUserProfileFailed(error.response.data.reason));
     return null;
   }
 }

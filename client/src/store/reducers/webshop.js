@@ -4,12 +4,14 @@ import { updateObject } from '../../utils/utility';
 const initialState = {
   errorFetchProducts: false,
   errorNavigationItems: false,
+  errorUserProfileData: false,
   isLoadingProducts: false,
   isLoadingNavigationItems: false,
+  isLoadingUserProfileData: false,
   navigationItems: null,
   products: null,
   searchTerm: '',
-  userProfile: null,
+  userProfileData: null,
 };
 
 const fetchProductsSuccess = (state, action) => {
@@ -43,6 +45,22 @@ const fetchNavigationItemsFailed = (state, action) => {
   });
 };
 
+// user profile
+const fetchUserProfileSuccess = (state, action) => {
+  return updateObject(state, {
+    userProfileData: action.userProfileData,
+    errorUserProfileData: false,
+    isLoadingUserProfileData: false,
+  });
+};
+
+const fetchUserProfileFailed = (state, action) => {
+  return updateObject(state, {
+    errorUserProfileData: action.error,
+    isLoadingUserProfileData: false,
+  });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PRODUCTS_SUCCESS:
@@ -53,6 +71,10 @@ const reducer = (state = initialState, action) => {
       return fetchNavigationItemsSuccess(state, action);
     case actionTypes.FETCH_NAVIGATION_FAILED:
       return fetchNavigationItemsFailed(state, action);
+    case actionTypes.FETCH_USER_PROFILE_SUCCESS:
+      return fetchUserProfileSuccess(state, action);
+    case actionTypes.FETCH_USER_PROFILE_FAILED:
+      return fetchUserProfileFailed(state, action);
     default:
       return state;
   }

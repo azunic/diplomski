@@ -19,4 +19,7 @@ export {
   fetchNavigation,
   fetchNavigationSuccess,
   fetchNavigationFailed,
+  fetchUserProfile,
+  fetchUserProfileSuccess,
+  fetchUserProfileFailed,
 } from './webShop';

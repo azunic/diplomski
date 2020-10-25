@@ -14,8 +14,6 @@ function SideDrawer(props) {
     dispatch(actions.fetchNavigation());
   }, []);
 
-  console.log('navigationItems', navigationItems);
-
   const displaySideDrawer = () => {
     if (!isMobile) {
       return true;
