@@ -5,6 +5,7 @@ const productVariantSchema = new mongoose.Schema({
   name: String,
   price: Number,
   unit: { type: String, enum: Object.values(constants.UNIT_CATEGORIES) },
+  products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
   unitValue: Number,
 });
 

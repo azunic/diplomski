@@ -14,8 +14,6 @@ function Navigation(props) {
   const token = useSelector((state) => state.auth.token);
   const userProfileData = useSelector((state) => state.webShop.userProfileData);
 
-  console.log('userProfileData', userProfileData);
-
   useEffect(() => {
     token && props.history.push('/home');
     if (token) {

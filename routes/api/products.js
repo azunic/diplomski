@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const validateProducts = require('../../validation/products');
 const Products = require('../../models/Products');
-const Brand = require('../../models/Brand');
+const Brands = require('../../models/Brand');
+const ProductVariants = require('../../models/ProductVariant');
+const Posts = require('../../models/Post');
 
 //GET / - dohvati sve proizvode
 router.get('/', async (req, res) => {
@@ -18,8 +20,22 @@ router.get('/', async (req, res) => {
 //GET /:id - dohvati jedan proizvod
 router.get('/:id', async (req, res) => {
   try {
-    const Products = await Products.findById(req.params.id);
-    res.send(Products);
+    const product = await Products.findById(req.params.id).populate('productVariant', '_id name price unit unitValue');
+    const productBrand = await Brands.findOne({ products: product._id });
+    const reviews = await Posts.find({ product: product._id });
+    const response = {
+      _id: product.id,
+      name: product.name,
+      image: product.image,
+      details: product.details,
+      brand: {
+        _id: productBrand._id,
+        name: productBrand.name,
+        imageUrl: productBrand.imageUrl,
+      },
+      reviews,
+    };
+    res.send(response);
   } catch (err) {
     console.error('An error occurred on product get one', err);
     res.status(500).send(err);
@@ -43,7 +59,7 @@ router.post('/', async (req, res) => {
     });
     const newProduct = await newProducts.save();
     console.log('after save newProduct', newProduct);
-    await Brand.findByIdAndUpdate(brand, { $addToSet: { products: [newProduct._id] } });
+    await Brands.findByIdAndUpdate(brand, { $addToSet: { products: [newProduct._id] } });
 
     res.send(newProducts);
   } catch (err) {

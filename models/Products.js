@@ -4,6 +4,8 @@ const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     image: { type: String, required: true },
+    details: { type: String },
+    ingredients: { type: String },
     reviews: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
     },

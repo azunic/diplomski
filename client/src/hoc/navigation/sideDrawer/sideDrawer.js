@@ -9,7 +9,9 @@ function SideDrawer(props) {
   const dispatch = useDispatch();
   const navigationItems = useSelector((state) => state.webShop.navigationItems);
   const error = useSelector((state) => state.webShop.errorNavigationItems);
+  const userProfileData = useSelector((state) => state.webShop.userProfileData);
 
+  console.log('User profile data', userProfileData);
   useEffect(() => {
     dispatch(actions.fetchNavigation());
   }, []);
@@ -41,47 +43,7 @@ function SideDrawer(props) {
   return (
     <aside id="sidedrawer" className={`sidedrawer sidedrawer-${displaySideDrawer() ? 'active' : 'inactive'}`}>
       <div className="sidedrawer-menus">
-        <ul className="sidedrawer-list">
-          {renderNavigationItems()}
-          {/* <SideDrawerListItem icon="home" text="Home" />
-          <SideDrawerListItem icon="brands" text="Brands" />
-          <SideDrawerListItem
-            icon="Accessories"
-            text="Accessories"
-            expandable={true}
-            expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
-          />
-          <SideDrawerListItem
-            icon="Mirisi"
-            text="Mirisi"
-            expandable={true}
-            expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
-          />
-          <SideDrawerListItem
-            icon="Drogerija"
-            text="Drogerija"
-            expandable={true}
-            expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
-          />
-          <SideDrawerListItem
-            icon="Kosa"
-            text="Kosa"
-            expandable={true}
-            expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
-          />
-          <SideDrawerListItem
-            icon="makeup"
-            text="Makeup"
-            expandable={true}
-            expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
-          />
-          <SideDrawerListItem
-            icon="Njega"
-            text="Njega"
-            expandable={true}
-            expandableItems={ACCESSORIES_EXPANDABLE_ITEMS}
-          /> */}
-        </ul>
+        <ul className="sidedrawer-list">{renderNavigationItems()}</ul>
         <div className="sidedrawer-list-divider"></div>
         <ul className="sidedrawer-list">
           <SideDrawerListItem text="COMMUNITY" />
@@ -95,10 +57,15 @@ function SideDrawer(props) {
       </div>
       <div className="sidedrawer-footer">
         <div className="sidedrawer-footer-title">Beauty spot</div>
-        <div className="sidedrawer-footer-subtitle">Ana Žunić</div>
+        <div className="sidedrawer-footer-subtitle">
+          {userProfileData && `${userProfileData.firstName} ${userProfileData.lastName}`}
+        </div>
         <ul className="sidedrawer-footer-list">
           <li className="sidedrawer-footer-list-item">
-            <span className="sidedrawer-footer-list-item-count">53</span> proizvoda
+            <span className="sidedrawer-footer-list-item-count">
+              {userProfileData && `${userProfileData.ownedProducts.length}`}
+            </span>{' '}
+            proizvoda
           </li>
           <li className="sidedrawer-footer-list-item">
             <span className="sidedrawer-footer-list-item-count">4</span> zamjene

@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const errorHandler = require('errorhandler');
