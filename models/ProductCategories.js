@@ -5,6 +5,7 @@ const productCategorySchema = new mongoose.Schema(
   {
     mainCategory: { type: mongoose.Schema.Types.ObjectId, ref: 'MainCategory' },
     name: { type: String, enum: Object.values(constants.PRODUCT_CATEGORIES) },
+    productSubCategories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ProductSubCategory' }],
   },
   { timestamps: true },
 );

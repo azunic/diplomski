@@ -21,6 +21,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const product = await Products.findById(req.params.id).populate('productVariant', '_id name price unit unitValue');
+
+    console.log('product', product);
     const productBrand = await Brands.findOne({ products: product._id });
     const reviews = await Posts.find({ product: product._id });
     const response = {
@@ -28,6 +30,8 @@ router.get('/:id', async (req, res) => {
       name: product.name,
       image: product.image,
       details: product.details,
+      ingredients: product.ingredients,
+      variants: [...product.productVariant],
       brand: {
         _id: productBrand._id,
         name: productBrand.name,
@@ -49,10 +53,12 @@ router.post('/', async (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    const { name, image, productVariant, productSubCategory, brand } = req.body;
+    const { name, image, productVariant, productSubCategory, brand, details, ingredients } = req.body;
     const newProducts = Products({
       name,
       image,
+      details,
+      ingredients,
       productVariant,
       productSubCategory,
       brand,

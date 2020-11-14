@@ -6,6 +6,7 @@ const orderSchema = new mongoose.Schema(
     paymentType: { type: String, enum: Object.values(constants.PAYMENT_TYPES) },
     couponCode: { type: mongoose.Schema.Types.ObjectId, ref: 'CouponCode' },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    orderDetails: [{ type: mongoose.Schema.Types.ObjectId, ref: 'OrderDetails' }],
   },
   { timestamps: true },
 );

@@ -1,14 +1,6 @@
 const mongoose = require('mongoose');
 const constants = require('../constants/database');
 
-const addressSchema = new mongoose.Schema({
-  streetNumber: Number,
-  street: String,
-  zip: Number,
-  city: String,
-  country: String,
-});
-
 const userSchema = new mongoose.Schema(
   {
     email: { type: String, unique: true, required: true },
@@ -19,7 +11,10 @@ const userSchema = new mongoose.Schema(
     dateOfBirth: { type: Date },
     gender: { type: String, enum: Object.values(constants.GENDERS) },
     username: { type: String, required: true },
-    //addresses: [addressSchema],
+    addresses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Address' }],
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+    cart: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' },
+
     wishListedProducts: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
     },

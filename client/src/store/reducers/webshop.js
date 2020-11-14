@@ -3,17 +3,20 @@ import { updateObject } from '../../utils/utility';
 
 const initialState = {
   errorFetchProducts: false,
+  errorFetchProduct: false,
   errorNavigationItems: false,
   errorUserProfileData: false,
   isLoadingProducts: false,
+  isLoadingProduct: false,
   isLoadingNavigationItems: false,
   isLoadingUserProfileData: false,
   navigationItems: null,
   products: null,
+  product: null,
   searchTerm: '',
   userProfileData: null,
 };
-
+//fetch products
 const fetchProductsSuccess = (state, action) => {
   return updateObject(state, {
     products: action.products,
@@ -28,6 +31,25 @@ const fetchProductsFailed = (state, action) => {
     isLoadingProducts: false,
   });
 };
+
+// fetch products end
+
+// fetch product
+const fetchProductSuccess = (state, action) => {
+  return updateObject(state, {
+    product: action.product,
+    errorFetchProduct: false,
+    isLoadingProduct: false,
+  });
+};
+
+const fetchProductFailed = (state, action) => {
+  return updateObject(state, {
+    errorFetchProduct: action.error,
+    isLoadingProduct: false,
+  });
+};
+//fetch product end
 
 // NAVIGACIJA
 const fetchNavigationItemsSuccess = (state, action) => {
@@ -67,6 +89,10 @@ const reducer = (state = initialState, action) => {
       return fetchProductsSuccess(state, action);
     case actionTypes.FETCH_PRODUCTS_FAILED:
       return fetchProductsFailed(state, action);
+    case actionTypes.FETCH_PRODUCT_SUCCESS:
+      return fetchProductSuccess(state, action);
+    case actionTypes.FETCH_PRODUCT_FAILED:
+      return fetchProductFailed(state, action);
     case actionTypes.FETCH_NAVIGATION_SUCCESS:
       return fetchNavigationItemsSuccess(state, action);
     case actionTypes.FETCH_NAVIGATION_FAILED:

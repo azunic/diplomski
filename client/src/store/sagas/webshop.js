@@ -12,6 +12,17 @@ export function* fetchProducts() {
     return null;
   }
 }
+export function* fetchProduct(action) {
+  const productId = action.productId;
+  console.log('sagaaaaaa:', productId);
+  try {
+    const response = yield call(api.fetchProduct, productId);
+    yield put(actions.fetchProductSuccess(response.data));
+  } catch (error) {
+    yield put(actions.fetchProductFailed(error.response.data.reason));
+    return null;
+  }
+}
 
 // NAVIGATION
 export function* fetchNavigation() {

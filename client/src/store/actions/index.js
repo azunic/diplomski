@@ -22,4 +22,7 @@ export {
   fetchUserProfile,
   fetchUserProfileSuccess,
   fetchUserProfileFailed,
+  fetchProduct,
+  fetchProductSuccess,
+  fetchProductFailed,
 } from './webShop';

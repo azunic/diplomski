@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-//products start
+// fetch products start
 export const fetchProducts = (category) => {
   return {
     type: actionTypes.FETCH_PRODUCTS,
@@ -22,7 +22,32 @@ export const fetchProductsFailed = (error) => {
   };
 };
 
-//products end
+// fetch products end
+
+// fetch product  start
+export const fetchProduct = (productId) => {
+  console.log('akcija----', productId);
+  return {
+    type: actionTypes.FETCH_PRODUCT,
+    productId,
+  };
+};
+
+export const fetchProductSuccess = (product) => {
+  return {
+    type: actionTypes.FETCH_PRODUCT_SUCCESS,
+    product,
+  };
+};
+
+export const fetchProductFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_PRODUCT_FAILED,
+    error,
+  };
+};
+
+// fetch product end
 
 //region utilities
 

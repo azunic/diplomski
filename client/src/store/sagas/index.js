@@ -3,7 +3,7 @@ import { takeEvery, all } from 'redux-saga/effects';
 import * as actionTypes from '../actions/actionTypes';
 
 import { authRegisterUserSaga, authLoginUserSaga, logoutSaga, authCheckStateSaga } from './auth';
-import { fetchProducts, fetchNavigation, fetchUserProfile } from './webShop';
+import { fetchProducts, fetchNavigation, fetchUserProfile, fetchProduct } from './webShop';
 
 export function* watchAuth() {
   yield all([
@@ -17,6 +17,7 @@ export function* watchAuth() {
 export function* watchWebShop() {
   yield all([
     takeEvery(actionTypes.FETCH_PRODUCTS, fetchProducts),
+    takeEvery(actionTypes.FETCH_PRODUCT, fetchProduct),
     takeEvery(actionTypes.FETCH_NAVIGATION, fetchNavigation),
     takeEvery(actionTypes.FETCH_USER_PROFILE, fetchUserProfile),
   ]);

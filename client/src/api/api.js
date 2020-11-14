@@ -20,6 +20,9 @@ export const fetchUserProfile = async () => {
 export const fetchProducts = async () => {
   return await axios.get(PRODUCTS, getToken());
 };
+export const fetchProduct = async (productId) => {
+  return await axios.get(`${PRODUCTS}/${productId}`, getToken());
+};
 
 // get navigation
 export const fetchNavigation = async () => {
