@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import AuthPage from './pages/auth/AuthPage';
 import NotExistPage from './pages/NotExistPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
+import UserPage from './pages/UserPage';
 
 import * as actions from './store/actions/index';
 
@@ -23,6 +24,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/home" component={HomePage} />
+        <Route exact path="/me" component={UserPage} />
         <Route path="/product-details/:productId" component={ProductDetailsPage} />
         <Route path="*" component={NotExistPage} />
       </Switch>

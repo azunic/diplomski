@@ -64,7 +64,7 @@ function ProductDetailsPage(props) {
             {variants[0].unitValue > 0 ? 'Dostupno' : 'Nije dostupno'}
           </div>
           <div className="product-details-body-right-notes">
-            <span class="material-icons product-details-body-right-notes-icon">airport_shuttle</span>
+            <span className="material-icons product-details-body-right-notes-icon">airport_shuttle</span>
             <p>
               Cijena se odnosi na prodaju putem Interneta. Fotografija proizvoda ne mora u potpunosti odgovarati
               stvarnom izgledu i sadržaju proizvoda. U slučaju tehničkih pogrešaka Douglas ne preuzima odgovornost za
@@ -76,7 +76,7 @@ function ProductDetailsPage(props) {
             <button> Dodajte u košaricu</button>
           </div>
           <div className="product-details-body-right-wishlist">
-            <div class="material-icons product-details-body-right-wishlist-icon">favorite_border</div>
+            <div className="material-icons product-details-body-right-wishlist-icon">favorite_border</div>
             <div>
               <a href="#">Stavite na popis želja</a>
             </div>
