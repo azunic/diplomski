@@ -9,7 +9,8 @@ function ProductDetailsPage(props) {
   const product = useSelector((state) => state.webShop.product);
   const error = useSelector((state) => state.webShop.errorFetchProduct);
   let { productId } = useParams();
-  console.log('Product', product);
+  //console.log('Product', product);
+  console.log('Product', JSON.stringify(product));
   useEffect(() => {
     console.log('params.productId', productId);
     dispatch(actions.fetchProduct(productId));

@@ -11,3 +11,6 @@ export const PRODUCTS = 'api/products';
 
 //navigation
 export const GET_NAVIGATION = 'api/utilities/getNavigation';
+
+// brands
+export const BRANDS = 'api/brands';

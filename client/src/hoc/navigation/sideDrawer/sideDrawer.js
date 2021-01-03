@@ -3,9 +3,10 @@ import SideDrawerListItem from './sideDrawerListItem';
 import { ACCESSORIES_EXPANDABLE_ITEMS } from '../../../constants/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../../store/actions';
+import { withRouter } from 'react-router';
 
 function SideDrawer(props) {
-  const { isMobile, sideDrawerOpen } = props;
+  const { isMobile, sideDrawerOpen, history } = props;
   const dispatch = useDispatch();
   const navigationItems = useSelector((state) => state.webShop.navigationItems);
   const error = useSelector((state) => state.webShop.errorNavigationItems);
@@ -35,9 +36,15 @@ function SideDrawer(props) {
         text={item.name}
         expandable={item.name !== 'Home' && item.name !== 'Brands'}
         expandableItems={item.navItems}
+        OnClick={() => goToFunction(item.name)}
       />
     ));
     return navItems;
+  };
+
+  const goToFunction = (name) => {
+    console.log(name);
+    history.push(`/${name}`);
   };
 
   return (
@@ -77,4 +84,4 @@ function SideDrawer(props) {
   );
 }
 
-export default SideDrawer;
+export default withRouter(SideDrawer);

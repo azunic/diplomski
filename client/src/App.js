@@ -6,6 +6,7 @@ import Navigation from './hoc/navigation/navigation';
 import HomePage from './pages/HomePage';
 import AuthPage from './pages/auth/AuthPage';
 import NotExistPage from './pages/NotExistPage';
+import BrandsPage from './pages/BrandsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import UserPage from './pages/UserPage';
 
@@ -25,6 +26,8 @@ class App extends Component {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/me" component={UserPage} />
+        <Route exact path="/home/:brandId" component={HomePage} />
+        <Route exact path="/brands" component={BrandsPage} />
         <Route path="/product-details/:productId" component={ProductDetailsPage} />
         <Route path="*" component={NotExistPage} />
       </Switch>

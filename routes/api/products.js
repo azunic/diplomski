@@ -5,6 +5,7 @@ const Products = require('../../models/Products');
 const Brands = require('../../models/Brand');
 const ProductVariants = require('../../models/ProductVariant');
 const Posts = require('../../models/Post');
+const ProductSubCategory = require('../../models/ProductSubCategories');
 
 //GET / - dohvati sve proizvode
 router.get('/', async (req, res) => {
@@ -21,7 +22,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const product = await Products.findById(req.params.id).populate('productVariant', '_id name price unit unitValue');
-
+    const productSubCategories = await ProductSubCategory.findOne({ products: product._id });
+    console.log(productSubCategories);
     console.log('product', product);
     const productBrand = await Brands.findOne({ products: product._id });
     const reviews = await Posts.find({ product: product._id });

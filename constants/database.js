@@ -1,4 +1,4 @@
-const UNIT_CATEGORIES = ['ml', 'l', 'gr', 'kg', 'komad'];
+const UNIT_CATEGORIES = ['ml', 'l', 'gr', 'kg', 'kom'];
 const MAIN_CATEGORIES = ['Accessories', 'Mirisi', 'Drogerija', 'Kosa', 'Make up', 'Njega'];
 const PRODUCT_CATEGORIES = [
   // Accessories

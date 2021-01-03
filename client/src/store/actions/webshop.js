@@ -96,3 +96,51 @@ export const fetchUserProfileFailed = (error) => {
 };
 
 // user profile end
+
+// fetch brands start
+export const fetchBrands = () => {
+  return {
+    type: actionTypes.FETCH_BRANDS,
+  };
+};
+
+export const fetchBrandsSuccess = (brands) => {
+  return {
+    type: actionTypes.FETCH_BRANDS_SUCCESS,
+    brands,
+  };
+};
+
+export const fetchBrandsFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_BRANDS_FAILED,
+    error,
+  };
+};
+
+// fetch brands end
+
+// fetch brand  start
+export const fetchBrand = (brandId) => {
+  console.log('akcija----', brandId);
+  return {
+    type: actionTypes.FETCH_BRAND,
+    brandId,
+  };
+};
+
+export const fetchBrandSuccess = (brand) => {
+  return {
+    type: actionTypes.FETCH_BRAND_SUCCESS,
+    brand,
+  };
+};
+
+export const fetchBrandFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_BRAND_FAILED,
+    error,
+  };
+};
+
+// fetch product end

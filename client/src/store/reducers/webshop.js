@@ -6,13 +6,19 @@ const initialState = {
   errorFetchProduct: false,
   errorNavigationItems: false,
   errorUserProfileData: false,
+  errorFetchBrands: false,
+  errorFetchBrand: false,
   isLoadingProducts: false,
   isLoadingProduct: false,
   isLoadingNavigationItems: false,
   isLoadingUserProfileData: false,
+  isLoadingBrands: false,
+  isLoadingBrand: false,
   navigationItems: null,
   products: null,
   product: null,
+  brands: null,
+  brand: null,
   searchTerm: '',
   userProfileData: null,
 };
@@ -83,6 +89,41 @@ const fetchUserProfileFailed = (state, action) => {
   });
 };
 
+//fetch brands
+const fetchBrandsSuccess = (state, action) => {
+  return updateObject(state, {
+    brands: action.brands,
+    errorFetchBrands: false,
+    isLoadingBrands: false,
+  });
+};
+
+const fetchBrandsFailed = (state, action) => {
+  return updateObject(state, {
+    errorFetchBrands: action.error,
+    isLoadingBrands: false,
+  });
+};
+
+// fetch products end
+
+// fetch product
+const fetchBrandSuccess = (state, action) => {
+  return updateObject(state, {
+    brand: action.brand,
+    errorFetchBrand: false,
+    isLoadingBrand: false,
+  });
+};
+
+const fetchBrandFailed = (state, action) => {
+  return updateObject(state, {
+    errorFetchBrand: action.error,
+    isLoadingBrand: false,
+  });
+};
+//fetch product end
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PRODUCTS_SUCCESS:
@@ -101,6 +142,14 @@ const reducer = (state = initialState, action) => {
       return fetchUserProfileSuccess(state, action);
     case actionTypes.FETCH_USER_PROFILE_FAILED:
       return fetchUserProfileFailed(state, action);
+    case actionTypes.FETCH_BRANDS_SUCCESS:
+      return fetchBrandsSuccess(state, action);
+    case actionTypes.FETCH_BRANDS_FAILED:
+      return fetchBrandsFailed(state, action);
+    case actionTypes.FETCH_BRAND_SUCCESS:
+      return fetchBrandSuccess(state, action);
+    case actionTypes.FETCH_BRAND_FAILED:
+      return fetchBrandFailed(state, action);
     default:
       return state;
   }

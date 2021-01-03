@@ -57,7 +57,7 @@ function Navigation(props) {
         </div>
       </nav>
 
-      <SideDrawer isMobile={isMobile()} sideDrawerOpen={sideDrawerOpen} />
+      <SideDrawer isMobile={isMobile()} sideDrawerOpen={sideDrawerOpen} history={props.history} />
     </header>
   );
 }

@@ -24,6 +24,28 @@ export function* fetchProduct(action) {
   }
 }
 
+//BRANDS
+export function* fetchBrands() {
+  try {
+    const response = yield call(api.fetchBrands);
+    yield put(actions.fetchBrandsSuccess(response.data));
+  } catch (error) {
+    yield put(actions.fetchBrandsFailed(error.response.data.reason));
+    return null;
+  }
+}
+export function* fetchBrand(action) {
+  const productId = action.productId;
+  console.log('sagaaaaaa:', productId);
+  try {
+    const response = yield call(api.fetchProduct, productId);
+    yield put(actions.fetchBrandSuccess(response.data));
+  } catch (error) {
+    yield put(actions.fetchBrandFailed(error.response.data.reason));
+    return null;
+  }
+}
+
 // NAVIGATION
 export function* fetchNavigation() {
   try {

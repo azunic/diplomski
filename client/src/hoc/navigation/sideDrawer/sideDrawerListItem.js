@@ -3,10 +3,10 @@ import getIcon from '../../../utils/iconsLoader';
 
 export default function SideDrawerListItem(props) {
   const [expanded, setExpanded] = useState(false);
-  const { icon, text, expandable, expandableItems } = props;
+  const { icon, text, expandable, expandableItems, OnClick } = props;
 
   return (
-    <li className="sidedrawer-list-item">
+    <li className="sidedrawer-list-item" onClick={!expandable ? OnClick : null}>
       <div className="sidedrawer-list-item-expandable" onClick={() => setExpanded(!expanded)}>
         <div className="sidedrawer-list-item-expandable-left">
           {icon && (

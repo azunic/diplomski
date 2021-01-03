@@ -3,11 +3,14 @@ const router = express.Router();
 const validateProductSubCategories = require('../../validation/productSubCategories');
 const ProductSubCategories = require('../../models/ProductSubCategories');
 const ProductCategories = require('../../models/ProductCategories');
+const Product = require('../../models/Products');
 
 //dohvati sve  sub product kategorije
 router.get('/', async (req, res) => {
   try {
     const allproductSubCategories = await ProductSubCategories.find({});
+    const products = await Product.find({});
+    allproductSubCategories.products = [...products];
     res.send(allproductSubCategories);
   } catch (err) {
     console.error('An error occurred on productsubcategories get all', err);
