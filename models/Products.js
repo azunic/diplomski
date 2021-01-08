@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema(
     reviews: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
     },
-    productSubcategory: { type: mongoose.Schema.Types.ObjectId, ref: 'ProductSubcategory', required: false },
+    productSubCategory: { type: mongoose.Schema.Types.ObjectId, ref: 'ProductSubCategory', required: false },
     productVariant: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ProductVariant' }],
     },

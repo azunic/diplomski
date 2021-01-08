@@ -68,3 +68,26 @@ export function* fetchUserProfile() {
     return null;
   }
 }
+
+// CATEGORIES
+export function* fetchCategories() {
+  try {
+    const response = yield call(api.fetchCategories);
+    yield put(actions.fetchCategoriesSuccess(response.data));
+  } catch (error) {
+    yield put(actions.fetchCategoriesFailed(error.response.data.reason));
+    return null;
+  }
+}
+
+export function* fetchCategory(action) {
+  const categoryId = action.categoryId;
+  console.log('sagaaaaaa:', categoryId);
+  try {
+    const response = yield call(api.fetchCategory, categoryId);
+    yield put(actions.fetchCategorySuccess(response.data));
+  } catch (error) {
+    yield put(actions.fetchCategoryFailed(error.response.data.reason));
+    return null;
+  }
+}

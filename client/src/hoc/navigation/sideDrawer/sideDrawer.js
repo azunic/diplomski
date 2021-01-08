@@ -36,17 +36,30 @@ function SideDrawer(props) {
         text={item.name}
         expandable={item.name !== 'Home' && item.name !== 'Brands'}
         expandableItems={item.navItems}
-        OnClick={() => goToFunction(item.name)}
+        menuOnClick={() => menuGoToFunction(item.name)}
+        history={history}
       />
     ));
     return navItems;
   };
 
-  const goToFunction = (name) => {
+  const menuGoToFunction = (name) => {
     console.log(name);
     history.push(`/${name}`);
   };
+  const submenuGoToFunction = (name) => {
+    console.log(name);
+    let id = '';
+    if (name === 'Muški mirisi') {
+      id = '5fecf0f5e9d36532b44440a6';
+    } else if (name === 'Ženski mirisi') {
+      id = '5fafc161f797bd3670ef1cb1';
+    }
 
+    if (id != '') {
+      history.push(`products/category/${id}`);
+    }
+  };
   return (
     <aside id="sidedrawer" className={`sidedrawer sidedrawer-${displaySideDrawer() ? 'active' : 'inactive'}`}>
       <div className="sidedrawer-menus">

@@ -14,3 +14,6 @@ export const GET_NAVIGATION = 'api/utilities/getNavigation';
 
 // brands
 export const BRANDS = 'api/brands';
+
+// categories
+export const CATEGORIES = 'api/categories';

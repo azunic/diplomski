@@ -31,4 +31,10 @@ export {
   fetchBrand,
   fetchBrandSuccess,
   fetchBrandFailed,
+  fetchCategory,
+  fetchCategorySuccess,
+  fetchCategoryFailed,
+  fetchCategories,
+  fetchCategoriesSuccess,
+  fetchCategoriesFailed,
 } from './webShop';

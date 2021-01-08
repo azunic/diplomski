@@ -9,6 +9,7 @@ import NotExistPage from './pages/NotExistPage';
 import BrandsPage from './pages/BrandsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import UserPage from './pages/UserPage';
+import CategoryFilterPage from './pages/CategoryFilterPage';
 
 import * as actions from './store/actions/index';
 
@@ -29,6 +30,7 @@ class App extends Component {
         <Route exact path="/home/:brandId" component={HomePage} />
         <Route exact path="/brands" component={BrandsPage} />
         <Route path="/product-details/:productId" component={ProductDetailsPage} />
+        <Route exact path="/products/category/:categoryId" component={CategoryFilterPage} />
         <Route path="*" component={NotExistPage} />
       </Switch>
     );

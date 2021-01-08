@@ -8,17 +8,24 @@ const initialState = {
   errorUserProfileData: false,
   errorFetchBrands: false,
   errorFetchBrand: false,
+  errorFetchCategory: false,
+  errorFetchCategories: false,
   isLoadingProducts: false,
   isLoadingProduct: false,
   isLoadingNavigationItems: false,
   isLoadingUserProfileData: false,
   isLoadingBrands: false,
   isLoadingBrand: false,
+  isLoadingCategory: false,
+  isLoadingCategories: false,
+  isLoadingBrands: false,
   navigationItems: null,
   products: null,
   product: null,
   brands: null,
   brand: null,
+  category: null,
+  categories: null,
   searchTerm: '',
   userProfileData: null,
 };
@@ -124,6 +131,43 @@ const fetchBrandFailed = (state, action) => {
 };
 //fetch product end
 
+//fetch categories
+const fetchCategoriesSuccess = (state, action) => {
+  console.log('kategorije');
+  return updateObject(state, {
+    categories: action.categories,
+    errorFetchCategories: false,
+    isLoadingCategories: false,
+  });
+};
+
+const fetchCategoriesFailed = (state, action) => {
+  return updateObject(state, {
+    errorFetchCategories: action.error,
+    isLoadingCategories: false,
+  });
+};
+
+// fetch categories end
+
+// fetch category
+
+const fetchCategorySuccess = (state, action) => {
+  return updateObject(state, {
+    category: action.category,
+    errorFetchCategory: false,
+    isLoadingCategory: false,
+  });
+};
+
+const fetchCategoryFailed = (state, action) => {
+  return updateObject(state, {
+    errorFetchCategory: action.error,
+    isLoadingCategory: false,
+  });
+};
+//fetch category end
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PRODUCTS_SUCCESS:
@@ -150,6 +194,14 @@ const reducer = (state = initialState, action) => {
       return fetchBrandSuccess(state, action);
     case actionTypes.FETCH_BRAND_FAILED:
       return fetchBrandFailed(state, action);
+    case actionTypes.FETCH_CATEGORY_SUCCESS:
+      return fetchCategorySuccess(state, action);
+    case actionTypes.FETCH_CATEGORY_FAILED:
+      return fetchCategoryFailed(state, action);
+    case actionTypes.FETCH_CATEGORIES_SUCCESS:
+      return fetchCategoriesSuccess(state, action);
+    case actionTypes.FETCH_CATEGORIES_FAILED:
+      return fetchCategoriesFailed(state, action);
     default:
       return state;
   }

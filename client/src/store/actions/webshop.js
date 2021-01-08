@@ -144,3 +144,53 @@ export const fetchBrandFailed = (error) => {
 };
 
 // fetch product end
+
+// fetch brands end
+
+// fetch category  start
+export const fetchCategory = (categoryId) => {
+  console.log('akcija----', categoryId);
+  return {
+    type: actionTypes.FETCH_CATEGORY,
+    categoryId,
+  };
+};
+
+export const fetchCategorySuccess = (category) => {
+  return {
+    type: actionTypes.FETCH_CATEGORY_SUCCESS,
+    category,
+  };
+};
+
+export const fetchCategoryFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_CATEGORY_FAILED,
+    error,
+  };
+};
+
+// fetch category end
+
+// fetch categories start
+export const fetchCategories = () => {
+  return {
+    type: actionTypes.FETCH_CATEGORIES,
+  };
+};
+
+export const fetchCategoriesSuccess = (categories) => {
+  return {
+    type: actionTypes.FETCH_CATEGORIES_SUCCESS,
+    categories,
+  };
+};
+
+export const fetchCategoriesFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_CATEGORIES_FAILED,
+    error,
+  };
+};
+
+// fetch brands end
