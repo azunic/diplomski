@@ -10,7 +10,7 @@ import BrandsPage from './pages/BrandsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import UserPage from './pages/UserPage';
 import CategoryFilterPage from './pages/CategoryFilterPage';
-
+import HelpPage from './pages/HelpPage';
 import * as actions from './store/actions/index';
 
 class App extends Component {
@@ -29,6 +29,7 @@ class App extends Component {
         <Route exact path="/me" component={UserPage} />
         <Route exact path="/home/:brandId" component={HomePage} />
         <Route exact path="/brands" component={BrandsPage} />
+        <Route exact path="/help" component={HelpPage} />
         <Route path="/product-details/:productId" component={ProductDetailsPage} />
         <Route exact path="/products/category/:categoryId" component={CategoryFilterPage} />
         <Route path="*" component={NotExistPage} />

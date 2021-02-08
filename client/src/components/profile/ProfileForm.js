@@ -6,8 +6,8 @@ export default function ProfileForm() {
   return (
     <div>
       <div className="product-variant">
-        <div className="product-variant-name">USER PROFILE</div>
-        <div className="product-variant-price"> iME</div>
+        <div className="product-variant-name">anaASADEWFEGRG</div>
+        <div className="product-variant-price"> ANA </div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 @import './base/fonts';
 @import './base/settings';
 @import './base/base';
-
+@import '~bootstrap/scss/bootstrap';
 //components
 @import './components/navigation';
 @import './components/product-card';
@@ -12,3 +12,4 @@
 @import './pages/home';
 @import './pages/product-details';
 @import './pages/user-page';
+@import './pages/help';
