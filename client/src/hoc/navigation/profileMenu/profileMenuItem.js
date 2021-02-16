@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import getIcon from '../../../utils/iconsLoader';
 
 function ProfileMenuItem(props) {
-  const { icon, text, hasNotification, notificationCounter, hasDivider } = props;
+  const { icon, text, hasNotification, notificationCounter, hasDivider, navOnClick } = props;
   return (
     <>
-      <li className="profile-menu-row">
+      <li className="profile-menu-row" onClick={navOnClick}>
         <div className="profile-menu-row-left">
           <div className="profile-menu-row-left-icon">
             <img src={getIcon(icon)} alt={`${icon} icon`}></img>

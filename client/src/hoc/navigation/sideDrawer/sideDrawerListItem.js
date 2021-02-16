@@ -3,7 +3,7 @@ import getIcon from '../../../utils/iconsLoader';
 
 export default function SideDrawerListItem(props) {
   const [expanded, setExpanded] = useState(false);
-  const { icon, text, expandable, expandableItems, OnClick, history } = props;
+  const { icon, text, expandable, expandableItems, menuOnClick, history } = props;
   const submenuGoToFunction = (name) => {
     let id = '';
     if (name === 'Muški mirisi') {
@@ -17,7 +17,7 @@ export default function SideDrawerListItem(props) {
     }
   };
   return (
-    <li className="sidedrawer-list-item" onClick={!expandable ? OnClick : null}>
+    <li className="sidedrawer-list-item" onClick={!expandable ? menuOnClick : null}>
       <div className="sidedrawer-list-item-expandable" onClick={() => setExpanded(!expanded)}>
         <div className="sidedrawer-list-item-expandable-left">
           {icon && (

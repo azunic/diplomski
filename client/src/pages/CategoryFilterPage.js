@@ -3,14 +3,17 @@ import ProductCard from '../components/product/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
+import * as api from '../api/api';
 
 function CategoryFilterPage() {
   const dispatch = useDispatch();
+  let { categoryId } = useParams();
   let products = useSelector((state) => state.webShop.products);
   let categories = useSelector((state) => state.webShop.categories);
   const error = useSelector((state) => state.webShop.errorFetchProducts);
   let logme = useSelector((state) => state.webShop);
-  let { categoryId } = useParams();
+
+  let log = useSelector((state) => state);
 
   useEffect(() => {
     console.log('hereeee');
@@ -54,7 +57,7 @@ function CategoryFilterPage() {
     return <div>No products</div>;
   };
 
-  return <div className="home">{renderProducts()}</div>;
+  return <div className="home">{categories === null ? 'Loading' : renderProducts()}</div>;
 }
 
 export default CategoryFilterPage;

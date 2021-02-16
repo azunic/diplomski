@@ -48,6 +48,18 @@ function SideDrawer(props) {
     history.push(`/${name}`);
   };
 
+  /*
+  const submenuGoToFunction = (name) => {
+    console.log(name);
+    let id = '';
+    if (name === 'Muški mirisi') {
+      id = '5fecf0f5e9d36532b44440a6';
+    } else if (name === 'Ženski mirisi') {
+      id = '5fafc161f797bd3670ef1cb1';
+    }
+
+  };
+  */
   return (
     <aside id="sidedrawer" className={`sidedrawer sidedrawer-${displaySideDrawer() ? 'active' : 'inactive'}`}>
       <div className="sidedrawer-menus">

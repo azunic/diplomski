@@ -53,7 +53,7 @@ function Navigation(props) {
           <div className="nav-right-chevron" id="nav-chevron" onClick={toggleProfileMenu}>
             <i className="material-icons">{profileMenuOpen ? 'expand_less' : 'expand_more'}</i>
           </div>
-          <ProfileMenu profileMenuOpen={profileMenuOpen} />
+          <ProfileMenu profileMenuOpen={profileMenuOpen} history={props.history} />
         </div>
       </nav>
 

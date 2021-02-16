@@ -27,7 +27,11 @@ export default function Help() {
                 Isporučujete li vikendom?
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body>Pakete isporučujemo isključivo radnim danom.</Card.Body>
+                <Card.Body>
+                  Paketi se unutar Hrvatske obično isporučuju u manje od 24 sata. Unutar Europe standardno vrijeme
+                  dostave je između 24 i 96 sati.Dostavu vršimo od ponedjeljka do petka u redovno radno vrijeme. Ukoliko
+                  želite da se dostavi vikendom tada je potrebno nazvati naš info telefon na 0800 234 456 .
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
@@ -48,7 +52,13 @@ export default function Help() {
                 Dostavljate li pakete izvan Hrvatske?
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="3">
-                <Card.Body>Otpremu (dostavu) vršimo isključivo na području Republike Hrvatske.</Card.Body>
+                <Card.Body>
+                  Obzirom na trenutnu situaciju u Europi te regulama o socijalnom distanciranju za vrijeme COVID-19
+                  pandemije, Zemlje članice Europske Unije donijele su odluku oko smanjenja maksimalne težine paketa u
+                  međunarodnom transportu na 31,5kg. Ljubazno Vas molimo da pakete prema inozemnim destinacijama
+                  prilagodite novoj odredbi te u slučaju da težina prelazi maksimalnu dozvoljenu, svoje pakete
+                  prepakirate. Paketi koji prelaze gore navedene parametre, biti će vraćeni na adresu pošiljatelja.
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
@@ -69,7 +79,8 @@ export default function Help() {
               <Accordion.Collapse eventKey="5">
                 <Card.Body>
                   U slučaju da želite promijeniti narudžbu kontaktirajte nas na info@beautyppot.hr ili putem telefona na
-                  broj: 0800 213421
+                  broj: 0800 213421- Ukoliko želite promijeniti narudžbu dan prije dostavljanja tada nećemo moći bit u
+                  mogućnosti ispuniti Vaš zahtjev.
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
@@ -80,7 +91,8 @@ export default function Help() {
               <Accordion.Collapse eventKey="6">
                 <Card.Body>
                   Narudžbe se mogu otkazati u bilo kojem trenutku unutar 14 dana kontaktom na info@beautyspot.hr ili
-                  putem telefona na broj 0800 23134
+                  putem telefona na broj 0800 23134. Ukoliko je proizvod korišten a vraćen tada nećemo moči biti u
+                  mogućnosti ispuniti Vaš zahtjev.
                 </Card.Body>
               </Accordion.Collapse>
             </Card>

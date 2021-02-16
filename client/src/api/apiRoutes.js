@@ -16,4 +16,5 @@ export const GET_NAVIGATION = 'api/utilities/getNavigation';
 export const BRANDS = 'api/brands';
 
 // categories
-export const CATEGORIES = 'api/categories';
+// zakomentirano za prvu ruku export const CATEGORIES = 'api/categories';
+export const CATEGORIES = 'api/product-sub-categories';
