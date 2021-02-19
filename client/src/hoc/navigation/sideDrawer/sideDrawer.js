@@ -77,7 +77,7 @@ function SideDrawer(props) {
             proizvoda
           </li>
           <li className="sidedrawer-footer-list-item">
-            <span className="sidedrawer-footer-list-item-count">4</span> zamjene
+            <span className="sidedrawer-footer-list-item-count">4</span> Zamjene
           </li>
         </ul>
         <div className="sidedrawer-footer-link" onClick={() => menuGoToFunction('profile')}>

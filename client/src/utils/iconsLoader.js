@@ -14,6 +14,7 @@ import HelpSvg from '../assets/help.svg';
 import NotificationSvg from '../assets/bell.svg';
 import WomanSvg from '../assets/woman.svg';
 import ExitSvg from '../assets/exit.svg';
+import Safebox from '../assets/safebox.svg';
 
 function getIcon(iconName) {
   switch (iconName.toLowerCase()) {
@@ -49,6 +50,8 @@ function getIcon(iconName) {
       return WomanSvg;
     case 'logout':
       return ExitSvg;
+    case 'safebox':
+      return Safebox;
     default:
       return AccessoriesSvg;
   }
