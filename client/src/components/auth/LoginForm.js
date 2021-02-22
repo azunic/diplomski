@@ -11,6 +11,7 @@ function Login(props) {
   const error = useSelector((state) => state.auth.error);
 
   const onFinish = (values) => {
+    props.history.push('/home');
     dispatch(actions.authLogin(values.email, values.password));
   };
 
