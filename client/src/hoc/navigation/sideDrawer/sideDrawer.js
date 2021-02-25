@@ -54,9 +54,9 @@ function SideDrawer(props) {
         <ul className="sidedrawer-list">{renderNavigationItems()}</ul>
         <div className="sidedrawer-list-divider"></div>
         <ul className="sidedrawer-list">
-          <SideDrawerListItem text="COMMUNITY" />
+          <SideDrawerListItem text="MOJ ORMARIĆ" />
 
-          <SideDrawerListItem icon="shelf" text="Moj ormarić" menuOnClick={() => menuGoToFunction('locker')} />
+          <SideDrawerListItem icon="shelf" text="Prodajni štand" menuOnClick={() => menuGoToFunction('locker')} />
         </ul>
         <div className="sidedrawer-list-divider"></div>
         <ul className="sidedrawer-list">
