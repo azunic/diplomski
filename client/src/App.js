@@ -12,6 +12,7 @@ import UserPage from './pages/UserPage';
 import CategoryFilterPage from './pages/CategoryFilterPage';
 import HelpPage from './pages/HelpPage';
 import ProfilePage from './pages/ProfilePage';
+import AdminPage from './pages/adminSection/mainAdminPage';
 import SecurityPage from './pages/SecurityPage';
 import * as actions from './store/actions/index';
 
@@ -34,6 +35,7 @@ class App extends Component {
         <Route exact path="/help" component={HelpPage} />
         <Route exact path="/Profile" component={ProfilePage} />
         <Route exact path="/security" component={SecurityPage} />
+        <Route exact path="/admin" component={AdminPage} />
         <Route path="/product-details/:productId" component={ProductDetailsPage} />
         <Route exact path="/products/category/:categoryId" component={CategoryFilterPage} />
         <Route path="*" component={NotExistPage} />

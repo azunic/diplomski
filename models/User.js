@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     dateOfBirth: { type: Date },
+    role: { type: String },
     gender: { type: String, enum: Object.values(constants.GENDERS) },
     username: { type: String, required: true },
     addresses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Address' }],
