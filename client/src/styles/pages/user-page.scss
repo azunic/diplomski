@@ -6,6 +6,8 @@
   height: 100vh;
   padding: 90px 20px 20px 320px;
   width: 100vw;
+  outline: none;
+  margin: 20px 0 60px 0;
 
   &-head {
     display: flex;
@@ -205,7 +207,7 @@
   }
 }
 
-.product-variant {
+.photo {
   display: flex;
   align-items: center;
   margin: 10px 0;
@@ -213,13 +215,9 @@
   border-left: 1px solid rgba(151, 151, 151, 0.5);
   border-bottom: 1px solid rgba(151, 151, 151, 0.5);
 
-  &:last-child {
-    margin: 10px 0 0 0;
-  }
-
   img {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
   }
 
   &-name {
@@ -232,12 +230,5 @@
     &:hover {
       text-decoration: underline;
     }
-  }
-
-  &-price {
-    color: black;
-    font-weight: 500;
-    font-size: 15px;
-    font-size: 25px;
   }
 }
