@@ -19,6 +19,7 @@ const notifications = require('./routes/api/notifications');
 const products = require('./routes/api/products');
 const productVariant = require('./routes/api/productVariant');
 const utilities = require('./routes/api/utilities');
+const wardrobe = require('./routes/api/wardrobe');
 
 const config = require('./config/config');
 
@@ -54,6 +55,7 @@ app.use('/api/notifications', notifications);
 app.use('/api/products', products);
 app.use('/api/product-variant', productVariant);
 app.use('/api/utilities', utilities);
+app.use('/api/wardrobe', wardrobe);
 
 if (config.nodeEnv === 'development') {
   // only use in development

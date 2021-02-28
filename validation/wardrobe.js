@@ -2,12 +2,12 @@ const Validator = require('validator');
 const isEmpty = require('is-empty');
 const validationMessages = require('../constants/validation');
 
-function validateCart(data) {
+function validateWardrobe(data) {
   const errors = {};
-  data.expiratonDate = !isEmpty(expirationDate);
+  data.name = !isEmpty(data.name) ? data.name : '';
 
-  if (Validator.isEmpty(data.expirationDate)) {
-    errors.expirationDate = validationMessages.dateIsInvalid;
+  if (Validator.isEmpty(data.name)) {
+    errors.name = validationMessages.nameIsInvalid;
   }
 
   return {
@@ -16,4 +16,4 @@ function validateCart(data) {
   };
 }
 
-module.exports = validateCart;
+module.exports = validateWardrobe;
