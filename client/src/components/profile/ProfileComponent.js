@@ -60,7 +60,7 @@ export default function ProfileComponent(props) {
           <Form.Group>
             <Form.Label> Broj proizvoda na wish listi :</Form.Label>
             <ListGroup.Item disabled>{profile && `${profile.wishListedProducts.length}`}</ListGroup.Item>
-            <Link>Idi na wishlistu</Link>
+            <Link onClick={() => document.location.replace(`/wishlist`)}>Idi na wishlistu</Link>
           </Form.Group>
 
           <Form.Group>

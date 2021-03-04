@@ -1,5 +1,14 @@
 import axios from './axios';
-import { USER_SIGNUP, USER_LOGIN, USER_PROFILE, PRODUCTS, GET_NAVIGATION, BRANDS, CATEGORIES } from './apiRoutes';
+import {
+  USER_SIGNUP,
+  USER_LOGIN,
+  USER_PROFILE,
+  PRODUCTS,
+  GET_NAVIGATION,
+  BRANDS,
+  CATEGORIES,
+  USERS,
+} from './apiRoutes';
 
 const getToken = () => {
   return { headers: { Authorization: `${localStorage.getItem('token')}` } };
@@ -46,4 +55,8 @@ export const fetchCategories = async () => {
 
 export const fetchCategory = async (categoryId) => {
   return await axios.get(`${CATEGORIES}/${categoryId}`, getToken());
+};
+
+export const updateUser = async (user) => {
+  return await axios.put(`${USERS}/${user._id}`, user);
 };

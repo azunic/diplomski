@@ -144,6 +144,7 @@ router.get('/me', verifyToken, async (req, res) => {
     }
 
     const response = {
+      _id: req.userId,
       notificationCount: 5,
       firstName: user.firstName,
       lastName: user.lastName,

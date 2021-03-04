@@ -5,25 +5,35 @@ import { InfoCircleOutlined, ShoppingCartOutlined, HeartOutlined } from '@ant-de
 
 const { Meta } = Card;
 export default function ProductCard(props) {
-  const { name, image, brandName, brandImage, productId } = props;
+  const { name, image, brandName, brandImage, productId, wishlistCallback, wishlisted } = props;
   return (
-    <Link to={`/product-details/${productId}`}>
-      <Card
-        hoverable
-        className="product-card"
-        cover={<img alt="example" className="product-card-image" src={image} />}
-        actions={[
-          <InfoCircleOutlined key="setting" />,
-          <ShoppingCartOutlined key="edit" />,
-          <HeartOutlined key="ellipsis" />,
-        ]}
-      >
-        <Meta
-          avatar={<Avatar className="product-card-brand-image" src={brandImage} />}
-          title={name}
-          description={brandName}
+    <Card
+      hoverable
+      className="product-card"
+      cover={
+        <img
+          alt="example"
+          className="product-card-image"
+          src={image}
+          onClick={() => document.location.replace(`/product-details/${productId}`)}
         />
-      </Card>
-    </Link>
+      }
+      actions={[
+        <InfoCircleOutlined key="setting" onClick={() => document.location.replace(`/product-details/${productId}`)} />,
+        <ShoppingCartOutlined key="edit" />,
+        <HeartOutlined
+          key="ellipsis"
+          fill="#990000"
+          style={wishlisted === true ? { color: '#990000' } : {}}
+          onClick={() => wishlistCallback(productId)}
+        />,
+      ]}
+    >
+      <Meta
+        avatar={<Avatar className="product-card-brand-image" src={brandImage} />}
+        title={name}
+        description={brandName}
+      />
+    </Card>
   );
 }

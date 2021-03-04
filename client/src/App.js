@@ -15,7 +15,7 @@ import ProfilePage from './pages/ProfilePage';
 import AdminPage from './pages/adminSection/mainAdminPage';
 import SecurityPage from './pages/SecurityPage';
 import * as actions from './store/actions/index';
-
+import WishlistPage from './pages/WishlistPage';
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignup();
@@ -33,6 +33,7 @@ class App extends Component {
         <Route exact path="/home/:brandId" component={HomePage} />
         <Route exact path="/brands" component={BrandsPage} />
         <Route exact path="/help" component={HelpPage} />
+        <Route exact path="/wishlist" component={WishlistPage} />
         <Route exact path="/Profile" component={ProfilePage} />
         <Route exact path="/security" component={SecurityPage} />
         <Route exact path="/admin" component={AdminPage} />
