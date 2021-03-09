@@ -16,6 +16,10 @@ import AdminPage from './pages/adminSection/mainAdminPage';
 import SecurityPage from './pages/SecurityPage';
 import * as actions from './store/actions/index';
 import WishlistPage from './pages/WishlistPage';
+import LockerAllProductsPage from './pages/LockerAllProductsPage';
+import LockerPage from './pages/LockerPage';
+import CreateProductPage from './pages/CreateProductPage';
+
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignup();
@@ -40,6 +44,9 @@ class App extends Component {
         <Route path="/product-details/:productId" component={ProductDetailsPage} />
         <Route exact path="/products/category/:categoryId" component={CategoryFilterPage} />
         <Route path="*" component={NotExistPage} />
+        <Route exact path="/locker/all" component={LockerAllProductsPage} />
+        <Route exact path="/locker" component={LockerPage} />
+        <Route exact path="/locker/addproduct" component={CreateProductPage} />
       </Switch>
     );
 

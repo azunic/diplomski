@@ -8,6 +8,8 @@ import {
   BRANDS,
   CATEGORIES,
   USERS,
+  WARDROBE,
+  POST,
 } from './apiRoutes';
 
 const getToken = () => {
@@ -59,4 +61,20 @@ export const fetchCategory = async (categoryId) => {
 
 export const updateUser = async (user) => {
   return await axios.put(`${USERS}/${user._id}`, user);
+};
+
+export const fetchUsers = async () => {
+  return await axios.get(USERS, getToken());
+};
+
+export const addWardrobeProduct = async (product) => {
+  return await axios.post(WARDROBE, product);
+};
+
+export const addPost = async (post) => {
+  return await axios.post(POST, post);
+};
+
+export const addProduct = async (product) => {
+  return await axios.post(PRODUCTS, product);
 };

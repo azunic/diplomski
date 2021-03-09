@@ -3,24 +3,79 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../store/actions/index';
 import { useParams } from 'react-router-dom';
 import ProductVariant from '../components/product/ProductVariant';
+import * as api from '../api/api';
+import { Rate } from 'antd';
+import { Select } from 'antd';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import { Input } from 'antd';
+import { List, Avatar } from 'antd';
 
 function ProductDetailsPage(props) {
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.webShop.product);
+  const productK = useSelector((state) => state.webShop.product);
   const error = useSelector((state) => state.webShop.errorFetchProduct);
   let { productId } = useParams();
+  let reviewRating = 0;
+  let text = '';
+  let title = '';
+  const isReview = 'false';
+  let imageUrl = '';
   //console.log('Product', product);
-  console.log('Product', JSON.stringify(product));
+  const product = productId;
+  console.log('ProductK', JSON.stringify(product));
   useEffect(() => {
     console.log('params.productId', productId);
     dispatch(actions.fetchProduct(productId));
   }, []);
 
-  if (!product) {
+  if (!productK) {
     return null;
   }
 
-  const { name, image, brand, details, reviews, variants, ingredients } = product;
+  const getReviews = () => {
+    if (productK && !error) {
+      return productK.reviews.map((r) => (
+        <div>
+          <List.Item>Naslov: {r.title}</List.Item>
+
+          <label>Ocjena:{r.reviewRating}</label>
+          <p>{r.reviewRating}</p>
+          <label>Iskustvo:</label>
+          <p>{r.title}</p>
+        </div>
+      ));
+    }
+  };
+
+  const doReview = () => {
+    const review = {
+      title,
+      text,
+      reviewRating,
+      isReview,
+      product,
+      imageUrl,
+    };
+    console.log(review);
+    const response = api.addPost(review);
+    console.log(response);
+    document.location.reload();
+  };
+
+  const onSelectionChange = (e) => {
+    reviewRating = e.target.value;
+  };
+
+  const onTitleChange = (e) => {
+    title = e.target.value;
+  };
+
+  const onTextChange = (e) => {
+    text = e.target.value;
+  };
+
+  const { name, image, brand, details, reviews, variants, ingredients } = productK;
 
   return (
     <div className="product-details">
@@ -114,8 +169,37 @@ function ProductDetailsPage(props) {
           </div>
         </div>
       </div>
-      <div className="product-details-footer">
-        <h1>Recenzije</h1>
+      <Container>
+        <div className="product-details-footer">
+          <h5 className="product-details-footer-title">Recenzije</h5>
+          <h6 className="product-details-footer">Napiši recenziju</h6>
+
+          <br></br>
+          <select onChange={onSelectionChange}>
+            <option value={1}>Nedovoljan</option>
+            <option value={2}>Dovoljan</option>
+            <option value={3}>Dobar</option>
+            <option value={4}>Vrlo dobar</option>
+            <option value={5}>Odličan</option>
+          </select>
+          <br></br>
+          <label>Naslov</label>
+          <br></br>
+          <input type="text" onChange={onTitleChange}></input>
+          <br></br>
+          <label>Iskustvo</label>
+          <br></br>
+          <textarea rows="5" cols="100" onChange={onTextChange}></textarea>
+          <br></br>
+          <Button variant="outline-secondary" onClick={doReview}>
+            Pošalji recenziju
+          </Button>
+        </div>
+      </Container>
+
+      <div>
+        <div className="product-details-body-left-description-item-title">Preostale recenzije</div>
+        {getReviews()}
       </div>
     </div>
   );

@@ -20,3 +20,6 @@ export const BRANDS = 'api/brands';
 export const CATEGORIES = 'api/product-sub-categories';
 
 export const USERS = 'api/users';
+
+export const WARDROBE = 'api/wardrobe';
+export const POST = 'api/post';
