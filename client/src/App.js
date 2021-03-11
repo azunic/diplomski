@@ -43,10 +43,11 @@ class App extends Component {
         <Route exact path="/admin" component={AdminPage} />
         <Route path="/product-details/:productId" component={ProductDetailsPage} />
         <Route exact path="/products/category/:categoryId" component={CategoryFilterPage} />
-        <Route path="*" component={NotExistPage} />
+
         <Route exact path="/locker/all" component={LockerAllProductsPage} />
         <Route exact path="/locker" component={LockerPage} />
         <Route exact path="/locker/addproduct" component={CreateProductPage} />
+        <Route path="*" component={NotExistPage} />
       </Switch>
     );
 
