@@ -37,11 +37,38 @@
     border-bottom: 1px solid rgba(151, 151, 151, 0.5);
     padding: 10px 0;
 
-    &-title {
-    }
-
     h1 {
       margin: 0;
+    }
+
+    h5 {
+      margin: 3;
+    }
+    &-title {
+      color: #c31d67;
+      display: flex;
+      width: 100%;
+      border-top: 1px solid rgba(151, 151, 151, 0.5);
+      border-bottom: 1px solid rgba(151, 151, 151, 0.5);
+      align-items: center;
+      padding: 10px 0;
+      display: flex;
+    }
+
+    &-grade {
+      width: 30%;
+      height: 30px;
+      border-radius: 1px;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.3);
+      transition: 0.7s all;
+      background-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0px 4px 20px 0px rgba(255, 255, 255, 0.45);
+    }
+
+    .grade:hover {
+      background-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0px 4px 20px 0px rgba(255, 255, 255, 0.45);
     }
   }
 
@@ -61,6 +88,11 @@
           width: 350px;
           height: 350px;
         }
+      }
+
+      &-grade {
+        padding: 100px;
+        border: 1px solid #ea468f;
       }
 
       &-gift {
@@ -252,5 +284,48 @@
     font-weight: 500;
     font-size: 15px;
     font-size: 25px;
+  }
+}
+.review {
+  box-sizing: border-box;
+  color: $black;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding: 0px 0px 0px 0px;
+  width: 100vw;
+}
+
+.review-card {
+  &-card {
+    margin: 30px;
+    position: static;
+    width: 220px;
+    height: fit-content;
+    padding: 0px 0px 0px 0px;
+
+    .ant-card-cover {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: 20px 20;
+    }
+
+    &-image {
+      height: 150px;
+      width: 150px;
+    }
+
+    &-brand-image {
+      & > img {
+        height: 32px;
+        max-height: 32px;
+        min-height: 32px;
+        width: 32px;
+        max-width: 32px;
+        min-width: 32px;
+        object-fit: fill;
+      }
+    }
   }
 }

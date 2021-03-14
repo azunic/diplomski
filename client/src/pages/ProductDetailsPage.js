@@ -5,16 +5,19 @@ import { useParams } from 'react-router-dom';
 import ProductVariant from '../components/product/ProductVariant';
 import * as api from '../api/api';
 import { Rate } from 'antd';
-import { Select } from 'antd';
+
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { Input } from 'antd';
-import { List, Avatar } from 'antd';
+import { Select, List } from 'antd';
+import { Card } from 'antd';
+import ProductCard from '../components/product/ProductCard';
 
 function ProductDetailsPage(props) {
   const dispatch = useDispatch();
   const productK = useSelector((state) => state.webShop.product);
   const error = useSelector((state) => state.webShop.errorFetchProduct);
+  const { TextArea } = Input;
   let { productId } = useParams();
   let reviewRating = 0;
   let text = '';
@@ -37,12 +40,10 @@ function ProductDetailsPage(props) {
     if (productK && !error) {
       return productK.reviews.map((r) => (
         <div>
-          <List.Item>Naslov: {r.title}</List.Item>
-
-          <label>Ocjena:{r.reviewRating}</label>
-          <p>{r.reviewRating}</p>
-          <label>Iskustvo:</label>
-          <p>{r.title}</p>
+          <Card className="review-card" title={r.title} style={{ width: 300 }}>
+            <p>{r.reviewRating}</p>
+            <p>{r.title}</p>
+          </Card>
         </div>
       ));
     }
@@ -170,36 +171,39 @@ function ProductDetailsPage(props) {
         </div>
       </div>
       <Container>
-        <div className="product-details-footer">
+        <div className="">
           <h5 className="product-details-footer-title">Recenzije</h5>
-          <h6 className="product-details-footer">Napiši recenziju</h6>
 
           <br></br>
-          <select onChange={onSelectionChange}>
+          <label className="product-details-body-left-description-item-title">Ocjena:</label>
+          <br></br>
+          <Select className="product-details-footer-grade" onChange={onSelectionChange}>
             <option value={1}>Nedovoljan</option>
             <option value={2}>Dovoljan</option>
             <option value={3}>Dobar</option>
             <option value={4}>Vrlo dobar</option>
             <option value={5}>Odličan</option>
-          </select>
+          </Select>
           <br></br>
-          <label>Naslov</label>
+          <label classNmae="product-detail-footer-h5">Naslov:</label>
           <br></br>
-          <input type="text" onChange={onTitleChange}></input>
+          <Input type="text" className="product-details-footer-grade" onChange={onTitleChange}></Input>
           <br></br>
-          <label>Iskustvo</label>
+          <label>Iskustvo:</label>
           <br></br>
-          <textarea rows="5" cols="100" onChange={onTextChange}></textarea>
+          <TextArea rows="3" cols="100" onChange={onTextChange}></TextArea>
+          <br></br>
           <br></br>
           <Button variant="outline-secondary" onClick={doReview}>
-            Pošalji recenziju
+            Pošalji recenziju:
           </Button>
         </div>
       </Container>
 
       <div>
-        <div className="product-details-body-left-description-item-title">Preostale recenzije</div>
-        {getReviews()}
+        <br></br>
+        <h5 className="product-details-footer-title">Preostale recenzije</h5>
+        <div class="review">{getReviews()}</div>
       </div>
     </div>
   );
