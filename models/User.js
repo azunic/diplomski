@@ -25,6 +25,9 @@ const userSchema = new mongoose.Schema(
     WardrobeProducts: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wardrobe' }],
     },
+    orderedProducts: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+    },
   },
   { timestamps: true },
 );

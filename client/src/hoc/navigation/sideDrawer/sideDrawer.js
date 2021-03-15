@@ -48,6 +48,19 @@ function SideDrawer(props) {
     history.push(`/${name}`);
   };
 
+  const renderAdmin = () => {
+    if (userProfileData) {
+      if (userProfileData.email === 'admin@admin.com') {
+        return (
+          <div className="sidedrawer-footer-link" onClick={() => menuGoToFunction('admin/allproducts')}>
+            Administrator
+          </div>
+        );
+      }
+    } else {
+      return <div></div>;
+    }
+  };
   return (
     <aside id="sidedrawer" className={`sidedrawer sidedrawer-${displaySideDrawer() ? 'active' : 'inactive'}`}>
       <div className="sidedrawer-menus">
@@ -83,6 +96,7 @@ function SideDrawer(props) {
         <div className="sidedrawer-footer-link" onClick={() => menuGoToFunction('profile')}>
           Moj profil
         </div>
+        <div>{renderAdmin()}</div>
       </div>
     </aside>
   );

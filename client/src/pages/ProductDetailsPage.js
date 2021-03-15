@@ -39,7 +39,7 @@ function ProductDetailsPage(props) {
   const getReviews = () => {
     if (productK && !error) {
       return productK.reviews.map((r) => (
-        <div>
+        <div className="">
           <Card className="review-card" title={r.title} style={{ width: 300 }}>
             <p>{r.reviewRating}</p>
             <p>{r.title}</p>
@@ -203,7 +203,7 @@ function ProductDetailsPage(props) {
       <div>
         <br></br>
         <h5 className="product-details-footer-title">Preostale recenzije</h5>
-        <div class="review">{getReviews()}</div>
+        <div class="review-home">{getReviews()}</div>
       </div>
     </div>
   );

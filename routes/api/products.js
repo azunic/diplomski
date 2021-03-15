@@ -31,6 +31,7 @@ router.get('/:id', async (req, res) => {
       _id: product.id,
       name: product.name,
       image: product.image,
+      price: product.price,
       details: product.details,
       ingredients: product.ingredients,
       variants: [...product.productVariant],
@@ -55,7 +56,7 @@ router.post('/', async (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    const { name, image, productVariant, productSubCategory, brand, details, ingredients } = req.body;
+    const { name, image, productVariant, productSubCategory, brand, details, ingredients, price } = req.body;
     const newProducts = Products({
       name,
       image,
@@ -64,6 +65,7 @@ router.post('/', async (req, res) => {
       productVariant,
       productSubCategory,
       brand,
+      price,
     });
     const newProduct = await newProducts.save();
     console.log('after save newProduct', newProduct);

@@ -19,6 +19,11 @@ import WishlistPage from './pages/WishlistPage';
 import LockerAllProductsPage from './pages/LockerAllProductsPage';
 import LockerPage from './pages/LockerPage';
 import CreateProductPage from './pages/CreateProductPage';
+import CreateProductAdminPage from './pages/CreateProductAdminPage';
+import EditProductAdminPage from './pages/EditProductAdminPage';
+import GetAllProductsAdminPage from './pages/GetAllProductsAdminPage';
+import GetAllUsersAdminPage from './pages/GetAllUsersAdminPage';
+import OrderPage from './pages/OrderPage';
 
 class App extends Component {
   componentDidMount() {
@@ -43,10 +48,14 @@ class App extends Component {
         <Route exact path="/admin" component={AdminPage} />
         <Route path="/product-details/:productId" component={ProductDetailsPage} />
         <Route exact path="/products/category/:categoryId" component={CategoryFilterPage} />
-
         <Route exact path="/locker/all" component={LockerAllProductsPage} />
         <Route exact path="/locker" component={LockerPage} />
+        <Route exact path="/admin/createproduct" component={CreateProductAdminPage} />
+        <Route exact path="/admin/editproduct/:productId" component={EditProductAdminPage} />
+        <Route exact path="/admin/allproducts" component={GetAllProductsAdminPage} />
+        <Route exact path="/admin/allusers" component={GetAllUsersAdminPage} />
         <Route exact path="/locker/addproduct" component={CreateProductPage} />
+        <Route exact path="/order" component={OrderPage} />
         <Route path="*" component={NotExistPage} />
       </Switch>
     );

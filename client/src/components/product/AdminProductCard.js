@@ -4,8 +4,8 @@ import { Card, Avatar } from 'antd';
 import { InfoCircleOutlined, ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
-export default function ProductCard(props) {
-  const { name, image, brandName, brandImage, productId, wishlistCallback, addToCartCallback, wishlisted } = props;
+export default function AdminProductCard(props) {
+  const { name, image, brandName, brandImage, productId, deleteProductCallback } = props;
   return (
     <Card
       hoverable
@@ -19,14 +19,12 @@ export default function ProductCard(props) {
         />
       }
       actions={[
-        <InfoCircleOutlined key="setting" onClick={() => document.location.replace(`/product-details/${productId}`)} />,
-        <ShoppingCartOutlined key="edit" onClick={() => addToCartCallback(productId)} />,
-        <HeartOutlined
-          key="ellipsis"
-          fill="#990000"
-          style={wishlisted === true ? { color: '#990000' } : {}}
-          onClick={() => wishlistCallback(productId)}
-        />,
+        <button class="btn btn-primary" onClick={() => window.location.replace(`/admin/editproduct/${productId}`)}>
+          Uredi
+        </button>,
+        <button class="btn btn-danger" onClick={() => deleteProductCallback(productId)}>
+          X
+        </button>,
       ]}
     >
       <Meta

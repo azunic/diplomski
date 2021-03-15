@@ -45,7 +45,25 @@ function HomePage() {
     console.log(product);
     return user.userProfileData.wishListedProducts.includes(product._id);
   };
+  const addToShoppingCart = (productId) => {
+    //console.log(user && `${user.username}`)
+    let lista = user.userProfileData.orderedProducts;
 
+    console.log(lista.length);
+
+    let product = products.find((product) => product._id === productId);
+
+    user.userProfileData.orderedProducts.push(product);
+
+    console.log(lista.length);
+    var response = api.updateUser(user.userProfileData);
+    response.then(function (result) {
+      console.log(result);
+      console.log(user.userProfileData.orderedProducts);
+      console.log('tu tutut ');
+      window.location.reload();
+    });
+  };
   const renderProducts = () => {
     if (products && !error && user.userProfileData) {
       console.log(logme);
@@ -62,6 +80,7 @@ function HomePage() {
           wishlisted={isWishlisted(p)}
           brandImage={p.brand.imageUrl}
           wishlistCallback={onWishlistClick}
+          addToCartCallback={addToShoppingCart}
         />
       ));
     }

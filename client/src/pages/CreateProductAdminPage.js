@@ -6,7 +6,7 @@ import * as actions from '../store/actions';
 import * as api from '../api/api';
 import { ButtonGroup } from 'react-bootstrap';
 
-function CreateProductPage() {
+function CreateProductAdminPage() {
   const dispatch = useDispatch();
   let products = useSelector((state) => state.webShop.products);
   const error = useSelector((state) => state.webShop.errorFetchProducts);
@@ -17,6 +17,7 @@ function CreateProductPage() {
   var price = '';
   var brand = '';
   var category = '';
+  var details = '';
 
   let { brandId } = useParams();
 
@@ -32,14 +33,13 @@ function CreateProductPage() {
     console.log(checkFields());
     var productVariant = products[0].productVariant;
     console.log(productVariant);
-    var email = user.userProfileData.email;
     const newProduct = {
       name,
       image,
       category,
       brand,
       productVariant,
-      email,
+      details,
       price,
     };
     console.log(newProduct);
@@ -48,11 +48,6 @@ function CreateProductPage() {
     response.then(function (result) {
       data = result.data;
       console.log(data);
-      user.userProfileData.ownedProducts.push(data);
-      console.log(user.userProfileData.ownedProducts);
-      api.updateUser(user.userProfileData);
-
-      window.location.replace('/locker');
     });
   };
 
@@ -83,10 +78,15 @@ function CreateProductPage() {
     console.log(price);
   };
 
+  const descriptionChange = (e) => {
+    console.log(e);
+    details = e.target.value;
+    console.log(price);
+  };
+
   const brandChange = (e) => {
     console.log(e);
     brand = e.target.value;
-
     console.log(brand);
   };
 
@@ -134,6 +134,10 @@ function CreateProductPage() {
             <input type="text" id="price" onChange={priceChange}></input>
           </div>
           <div>
+            <label>Opis proizvoda:</label>
+            <input type="text" id="details" onChange={descriptionChange}></input>
+          </div>
+          <div>
             <button onClick={createProduct}>Potvrdi</button>
           </div>
         </div>
@@ -146,14 +150,17 @@ function CreateProductPage() {
   return (
     <div className="home">
       <div>
-        <h2>Dodaj proizvod</h2>
-        <button onClick={() => document.location.replace('/locker/all')}>Pregledaj sve proizvode na trznici</button>
-        <button onClick={() => document.location.replace('/locker/addproduct')}>Dodaj novi proizvod</button>
+        <h2>Administrator</h2>
+        <button onClick={() => document.location.replace('/admin/allproducts')}>Pregledaj svoje proizvode</button>
+        <button onClick={() => document.location.replace('/admin/createproduct')}>Dodaj novi proizvod</button>
+
+        <button onClick={() => document.location.replace('/admin/allusers')}>Dohvati sve usere</button>
+
         <br></br>
-      </div>{' '}
+      </div>
       {renderCreateForm()}
     </div>
   );
 }
 
-export default CreateProductPage;
+export default CreateProductAdminPage;

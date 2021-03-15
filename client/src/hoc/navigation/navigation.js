@@ -6,6 +6,7 @@ import isMobile from 'is-mobile';
 import * as actions from '../../store/actions/index';
 import { withRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { InfoCircleOutlined, ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
 
 function Navigation(props) {
   const dispatch = useDispatch();
@@ -41,6 +42,12 @@ function Navigation(props) {
           <span className="nav-left-logo-text">BEAUTY SPOT</span>
         </div>
         <div className="nav-right">
+          <div className="nav-right-avatar" onClick={() => window.location.replace('/order')}>
+            <ShoppingCartOutlined></ShoppingCartOutlined>
+            {userProfileData && (
+              <div className="nav-right-avatar-nbubble">{userProfileData.orderedProducts.length}</div>
+            )}
+          </div>
           <div className="nav-right-avatar" onClick={toggleProfileMenu}>
             {userProfileData && `${userProfileData.firstName[0]}${userProfileData.lastName[0]}`}
             {userProfileData && userProfileData.notificationCount !== 0 && (

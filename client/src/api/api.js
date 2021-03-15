@@ -55,16 +55,21 @@ export const fetchCategories = async () => {
   return await axios.get(CATEGORIES, getToken());
 };
 
+export const fetchUsers = async () => {
+  console.log('called users');
+  return await axios.get(USERS, getToken());
+};
+
 export const fetchCategory = async (categoryId) => {
   return await axios.get(`${CATEGORIES}/${categoryId}`, getToken());
 };
 
-export const updateUser = async (user) => {
-  return await axios.put(`${USERS}/${user._id}`, user);
+export const deleteUser = async (userId) => {
+  return await axios.delete(`${USERS}/${userId}`, getToken());
 };
 
-export const fetchUsers = async () => {
-  return await axios.get(USERS, getToken());
+export const updateUser = async (user) => {
+  return await axios.put(`${USERS}/${user._id}`, user);
 };
 
 export const addWardrobeProduct = async (product) => {
@@ -77,4 +82,12 @@ export const addPost = async (post) => {
 
 export const addProduct = async (product) => {
   return await axios.post(PRODUCTS, product);
+};
+
+export const updateProduct = async (product) => {
+  return await axios.put(`${PRODUCTS}/${product._id}`, product);
+};
+
+export const deleteProduct = async (productId) => {
+  return await axios.delete(`${PRODUCTS}/${productId}`, getToken());
 };

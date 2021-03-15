@@ -154,6 +154,7 @@ router.get('/me', verifyToken, async (req, res) => {
       username: user.username,
       wishListedProducts: user.wishListedProducts,
       ownedProducts: user.ownedProducts,
+      orderedProducts: user.orderedProducts,
       //...user.toObject(),
     };
 
