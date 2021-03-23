@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
 import * as api from '../api/api';
 import { ButtonGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 function CreateProductPage() {
   const dispatch = useDispatch();
@@ -134,7 +135,9 @@ function CreateProductPage() {
             <input type="text" id="price" onChange={priceChange}></input>
           </div>
           <div>
-            <button onClick={createProduct}>Potvrdi</button>
+            <Button variant="outline-success" onClick={createProduct}>
+              Potvrdi
+            </Button>
           </div>
         </div>
       );
@@ -144,14 +147,23 @@ function CreateProductPage() {
   };
 
   return (
-    <div className="home">
-      <div>
-        <h2>Dodaj proizvod</h2>
-        <button onClick={() => document.location.replace('/locker/all')}>Pregledaj sve proizvode na trznici</button>
-        <button onClick={() => document.location.replace('/locker/addproduct')}>Dodaj novi proizvod</button>
+    <div>
+      <div className="security-details">
+        <div className="security-details-head">
+          <h2>Prodajni štand </h2>
+        </div>
+        <div className="locker">
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/locker/all')}>
+            Pregledaj sve proizvode na trznici
+          </Button>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/locker/addproduct')}>
+            Dodaj novi proizvod
+          </Button>
+        </div>
+
         <br></br>
-      </div>{' '}
-      {renderCreateForm()}
+      </div>
+      <div className="home">{renderCreateForm()}</div>
     </div>
   );
 }

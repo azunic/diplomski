@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ProductCard from '../components/product/ProductCard';
+import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
@@ -83,13 +84,20 @@ function OrderPage() {
     return <div>No products</div>;
   };
   return (
-    <div className="home">
+    <div className="order-details">
+      <div className="order-details-head">
+        <h2>Košarica</h2>
+      </div>
       {renderProducts()}
-      <div>
-        <label>Total to pay: {user.userProfileData ? calculateTotal() : '5'}</label>
-        <button className="btn btn-primary" onClick={() => doCheckout()}>
-          Checkout
-        </button>
+      <div className="order-details-payout">
+        <div className="polovica-prva">
+          <label className="order-details-label">Total to pay: {user.userProfileData ? calculateTotal() : '5'}</label>
+        </div>
+        <div className="polovica">
+          <Button variant="outline-success" onClick={() => doCheckout()}>
+            Checkout
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
 import * as api from '../api/api';
-
+import Button from 'react-bootstrap/Button';
 function LockerAllProductsPage() {
   const dispatch = useDispatch();
   let products = useSelector((state) => state.webShop.products);
@@ -47,19 +47,29 @@ function LockerAllProductsPage() {
       );
     }
 
-    return <div>No products</div>;
+    return <div>No products </div>;
   };
 
   return (
-    <div className="home">
-      <div>
-        <h2>Prodajni stand</h2>
-        <button onClick={() => document.location.replace('/locker/all')}>Pregledaj sve proizvode na trznici</button>
-        <button onClick={() => document.location.replace('/locker')}>Pregledaj svoje proizvode</button>
-        <button onClick={() => document.location.replace('/locker/addproduct')}>Dodaj novi proizvod</button>
-        <br></br>
+    <div>
+      <div className="security-details">
+        <div className="security-details-head">
+          <h2>Prodajni štand </h2>
+        </div>
+        <div>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/locker/all')}>
+            Pregledaj sve proizvode na trznici
+          </Button>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/locker')}>
+            Pregledaj svoje proizvode
+          </Button>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/locker/addproduct')}>
+            Dodaj novi proizvod
+          </Button>
+          <br></br>
+        </div>
       </div>
-      {renderProducts()}
+      <div className="home">{renderProducts()}</div>
     </div>
   );
 }

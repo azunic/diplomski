@@ -60,11 +60,11 @@ function WishlistPage() {
   };
 
   return (
-    <div className="home">
-      <div className="profile-form-head">
+    <div className="security-details">
+      <div className="security-details-head">
         <h2>Wishlist</h2>
       </div>
-      {renderProducts()}
+      <div className="wishlist">{renderProducts()}</div>
     </div>
   );
 }

@@ -39,10 +39,12 @@ function ProductDetailsPage(props) {
   const getReviews = () => {
     if (productK && !error) {
       return productK.reviews.map((r) => (
-        <div className="">
+        <div className="razmak">
           <Card className="review-card" title={r.title} style={{ width: 300 }}>
-            <p>{r.reviewRating}</p>
-            <p>{r.title}</p>
+            <p className="review-card-ocjena" style={{ color: 'C31D67' }}>
+              Ocjena: {r.reviewRating}
+            </p>
+            <p className="opis">Opis: {r.title}</p>
           </Card>
         </div>
       ));
@@ -203,7 +205,7 @@ function ProductDetailsPage(props) {
       <div>
         <br></br>
         <h5 className="product-details-footer-title">Preostale recenzije</h5>
-        <div class="review-home">{getReviews()}</div>
+        <div className="review-home">{getReviews()}</div>
       </div>
     </div>
   );

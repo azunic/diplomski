@@ -19,8 +19,8 @@ export default function OrderProductCard(props) {
         />
       }
       actions={[
-        <button class="btn btn-danger" onClick={() => removeFromCartCallback(productId)}>
-          Makni iz kosarice
+        <button className="btn btn-outline-danger btn-sm" onClick={() => removeFromCartCallback(productId)}>
+          Izbriši iz košarice
         </button>,
       ]}
     >

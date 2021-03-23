@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import WishlistProductCard from '../components/product/WishlistProductCard';
+import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
@@ -43,14 +44,20 @@ function LockerPage() {
   };
 
   return (
-    <div className="home">
-      <div>
-        <h2>Prodajni stand</h2>
-        <button onClick={() => document.location.replace('/locker')}>Pregledaj svoje proizvode</button>
-        <button onClick={() => document.location.replace('/locker/addproduct')}>Dodaj novi proizvod</button>
+    <div className="security-details">
+      <div className="security-details-head">
+        <h2>Prodajni štand </h2>
+      </div>
+      <div className="locker">
+        <Button variant="outline-secondary" onClick={() => document.location.replace('/locker')}>
+          Pregledaj svoje proizvode
+        </Button>
+        <Button variant="outline-secondary" onClick={() => document.location.replace('/locker/addproduct')}>
+          Dodaj novi proizvod
+        </Button>
         <br></br>
       </div>
-      {renderProducts()}
+      <div className="home">{renderProducts()}</div>
     </div>
   );
 }

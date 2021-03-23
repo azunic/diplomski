@@ -90,7 +90,8 @@ function SideDrawer(props) {
             proizvoda
           </li>
           <li className="sidedrawer-footer-list-item">
-            <span className="sidedrawer-footer-list-item-count">4</span> Zamjene
+            {/* A JSX comment */}
+            <span className="sidedrawer-footer-list-item-count">1</span> Zamjene
           </li>
         </ul>
         <div className="sidedrawer-footer-link" onClick={() => menuGoToFunction('profile')}>

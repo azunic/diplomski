@@ -24,14 +24,13 @@ export default function SecurityComponent() {
             </Card>
             <Card>
               <Accordion.Toggle as={Card.Header} eventKey="0" className="security-details-answer">
-                Izjava o zaštiti osobnih podataka Zaštita privatnosti opisuje kako Douglas parfumerije d.o.o. postupa s
-                vašim osobnim podacima koje zaprimi tijekom korištenja Douglas Internet prodavaonice. Pod osobnim
-                podacima smatraju se vaši identifikacijski podaci: ime i prezime, e-mail adresa, kućna adresa i broj
-                telefona, odnosno podaci koji inače nisu javno dostupni, a za koje Douglas parfumerije d.o.o. sazna
-                tijekom vašeg korištenja Douglas Internet prodavaonice. Douglas parfumerije d.o.o. će vaše osobne
-                podatke čuvati u tajnosti, te ih neće distribuirati, objavljivati, davati trećim stranama na korištenje
-                niti ih na bilo koji drugi način učiniti dostupnima bilo kojoj trećoj fizičkoj osobi bez vaše prethodne
-                suglasnosti.
+                Zaštita privatnosti opisuje kako BeatuySpot web aplikacija d.o.o. postupa s vašim osobnim podacima koje
+                zaprimi tijekom korištenja Beatuy Spot Internet prodavaonice. Pod osobnim podacima smatraju se vaši
+                identifikacijski podaci: ime i prezime, e-mail adresa, kućna adresa i broj telefona, odnosno podaci koji
+                inače nisu javno dostupni, a za koje BeautySpot d.o.o. sazna tijekom vašeg korištenja BeautySpot
+                Internet prodavaonice. Beauty Spot d.o.o će vaše osobne podatke čuvati u tajnosti, te ih neće
+                distribuirati, objavljivati, davati trećim stranama na korištenje niti ih na bilo koji drugi način
+                učiniti dostupnima bilo kojoj trećoj fizičkoj osobi bez vaše prethodne suglasnosti.
               </Accordion.Toggle>
             </Card>
           </Accordion>

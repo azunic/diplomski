@@ -1,0 +1,38 @@
+.order-details {
+  box-sizing: border-box;
+  color: $black;
+  display: flex;
+  flex-wrap: wrap;
+  height: 10%;
+  padding: 90px 20px 20px 320px;
+  width: 100vw;
+
+  &-head {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid rgba(151, 151, 151, 0.5);
+    border-bottom: 1px solid rgba(151, 151, 151, 0.5);
+    //padding: 10px 0;
+
+    &-title {
+      padding: 0 15px;
+      border-left: 1px solid rgba(151, 151, 151, 0.5);
+      display: flex;
+      align-items: center;
+    }
+
+    // &-payout{
+
+    //}
+
+    h1 {
+      margin: 0;
+    }
+  }
+}
+
+.polovica-prva {
+  height: 50%;
+  font-weight: normal;
+  align-items: center;
+}

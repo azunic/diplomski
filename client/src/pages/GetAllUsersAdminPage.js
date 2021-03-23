@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import AdminProductCard from '../components/product/AdminProductCard';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
 import * as api from '../api/api';
+import Button from 'react-bootstrap/Button';
 
 function GetAllUsersAdminPage() {
   const dispatch = useDispatch();
@@ -59,10 +61,16 @@ function GetAllUsersAdminPage() {
     <div className="home">
       <div>
         <h2>Administrator</h2>
-        <button onClick={() => document.location.replace('/admin/allproducts')}>Pregledaj svoje proizvode</button>
-        <button onClick={() => document.location.replace('/admin/createproduct')}>Dodaj novi proizvod</button>
+        <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allproducts')}>
+          Pregledaj svoje proizvode
+        </Button>
+        <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/createproduct')}>
+          Dodaj novi proizvod
+        </Button>
 
-        <button onClick={() => document.location.replace('/admin/allusers')}>Dohvati sve usere</button>
+        <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allusers')}>
+          Dohvati sve usere
+        </Button>
 
         <br></br>
       </div>
