@@ -4,8 +4,6 @@ import * as actions from '../store/actions/index';
 import { useParams } from 'react-router-dom';
 import ProductVariant from '../components/product/ProductVariant';
 import * as api from '../api/api';
-import { Rate } from 'antd';
-
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { Input } from 'antd';
@@ -19,6 +17,7 @@ function ProductDetailsPage(props) {
   const error = useSelector((state) => state.webShop.errorFetchProduct);
   const { TextArea } = Input;
   let { productId } = useParams();
+
   let reviewRating = 0;
   let text = '';
   let title = '';
@@ -177,9 +176,10 @@ function ProductDetailsPage(props) {
           <h5 className="product-details-footer-title">Recenzije</h5>
 
           <br></br>
+
           <label className="product-details-body-left-description-item-title">Ocjena:</label>
           <br></br>
-          <Select className="product-details-footer-grade" onChange={onSelectionChange}>
+          <Select className="product-details-footer-grade" style={{ position: 'static' }} onChange={onSelectionChange}>
             <option value={1}>Nedovoljan</option>
             <option value={2}>Dovoljan</option>
             <option value={3}>Dobar</option>
@@ -187,7 +187,7 @@ function ProductDetailsPage(props) {
             <option value={5}>Odličan</option>
           </Select>
           <br></br>
-          <label classNmae="product-detail-footer-h5">Naslov:</label>
+          <label className="product-detail-footer-h5">Naslov:</label>
           <br></br>
           <Input type="text" className="product-details-footer-grade" onChange={onTitleChange}></Input>
           <br></br>

@@ -1,3 +1,11 @@
+.ant-avatar {
+  position: static;
+}
+
+.ant-card-actions > li > span {
+  position: static;
+}
+
 .product {
   &-card {
     margin: 10px;

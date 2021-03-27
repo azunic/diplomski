@@ -1,3 +1,11 @@
+.ant-card {
+  position: static;
+}
+
+.ant-input {
+  position: static;
+}
+
 .product-details {
   box-sizing: border-box;
   color: $black;
@@ -44,6 +52,10 @@
     h5 {
       margin: 3;
     }
+
+    Button {
+      margin-top: 50px;
+    }
     &-title {
       color: #c31d67;
       display: flex;
@@ -59,7 +71,8 @@
       width: 30%;
       height: 30px;
       border-radius: 1px;
-      position: relative;
+      //position: relative;
+      position: static;
       background-color: rgba(255, 255, 255, 0.3);
       transition: 0.7s all;
       background-color: rgba(255, 255, 255, 0.45);
@@ -93,6 +106,12 @@
       &-grade {
         padding: 100px;
         border: 1px solid #ea468f;
+      }
+      &-card {
+        margin: 10px;
+        position: static;
+        width: 220px;
+        height: fit-content;
       }
 
       &-gift {
@@ -304,24 +323,18 @@
     height: fit-content;
     padding: 0px 0px 0px 0px;
 
-  &-ocjena{
-
-          margin-top: 15px;
-          font-weight: bold;
-        font-size: 14px;
-          color: rgb(234, 70, 143);
-
-  }
+    &-ocjena {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 14px;
+      color: rgb(234, 70, 143);
+    }
 
     .ant-card-cover {
       align-items: center;
       display: flex;
       justify-content: center;
       padding: 0px 0px 0px 0px;
-
     }
-
-
-
   }
 }

@@ -22,6 +22,7 @@ export default function SecurityComponent() {
                 korisnički račun.
               </Accordion.Toggle>
             </Card>
+
             <Card>
               <Accordion.Toggle as={Card.Header} eventKey="0" className="security-details-answer">
                 Zaštita privatnosti opisuje kako BeatuySpot web aplikacija d.o.o. postupa s vašim osobnim podacima koje
@@ -31,6 +32,16 @@ export default function SecurityComponent() {
                 Internet prodavaonice. Beauty Spot d.o.o će vaše osobne podatke čuvati u tajnosti, te ih neće
                 distribuirati, objavljivati, davati trećim stranama na korištenje niti ih na bilo koji drugi način
                 učiniti dostupnima bilo kojoj trećoj fizičkoj osobi bez vaše prethodne suglasnosti.
+              </Accordion.Toggle>
+            </Card>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="0" className="security-details-answer">
+                Koristimo ePay servis za Internet naplatu tvrtke BeautyInternet koji koristi najsuvremenije tehnologije
+                zaštite od zlouporaba, kao sto je sigurnosni protokol Secure Socket Layer (S SL) te druge tehnologije i
+                sigurnosne procedure po najvišim standa rdima. Razmjena osjetljivih podataka između sustava koji obavlja
+                online plaćanje i autorizacijskih centara kartičnih kuća obavlja se korištenjem mreže koja je potpuno
+                zaštićena od neautoriziranog pristupa. Osjetljivi podaci o vašoj kreditnoj kartici dostavljaju se online
+                izravno autorizacijskom centru.
               </Accordion.Toggle>
             </Card>
           </Accordion>

@@ -3,9 +3,14 @@
   color: $black;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 40vh; //bilo 100
   padding: 90px 20px 20px 320px;
   width: 100vw;
+  position: static;
+
+  &-col {
+    position: static;
+  }
 
   &-head {
     display: flex;

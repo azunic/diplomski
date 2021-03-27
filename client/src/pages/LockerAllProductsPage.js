@@ -51,25 +51,24 @@ function LockerAllProductsPage() {
   };
 
   return (
-    <div>
-      <div className="security-details">
-        <div className="security-details-head">
-          <h2>Prodajni štand </h2>
-        </div>
-        <div>
-          <Button variant="outline-secondary" onClick={() => document.location.replace('/locker/all')}>
-            Pregledaj sve proizvode na trznici
-          </Button>
+    <div className="security-details">
+      <div className="security-details-head">
+        <h2>Moj prodajni štand </h2>
+      </div>
+      <div className="locker row">
+        <div className="col">
           <Button variant="outline-secondary" onClick={() => document.location.replace('/locker')}>
             Pregledaj svoje proizvode
           </Button>
+        </div>
+
+        <div className="col">
           <Button variant="outline-secondary" onClick={() => document.location.replace('/locker/addproduct')}>
             Dodaj novi proizvod
           </Button>
-          <br></br>
         </div>
       </div>
-      <div className="home">{renderProducts()}</div>
+      <div className="locker-products">{renderProducts()}</div>
     </div>
   );
 }

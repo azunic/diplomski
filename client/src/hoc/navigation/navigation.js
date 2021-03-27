@@ -48,6 +48,12 @@ function Navigation(props) {
               <div className="nav-right-avatar-nbubble">{userProfileData.orderedProducts.length}</div>
             )}
           </div>
+          <div className="nav-right-avatar" onClick={() => window.location.replace('/wishlist')}>
+            <HeartOutlined></HeartOutlined>
+            {userProfileData && (
+              <div className="nav-right-avatar-nbubble">{userProfileData.wishListedProducts.length}</div>
+            )}
+          </div>
           <div className="nav-right-avatar" onClick={toggleProfileMenu}>
             {userProfileData && `${userProfileData.firstName[0]}${userProfileData.lastName[0]}`}
             {userProfileData && userProfileData.notificationCount !== 0 && (
