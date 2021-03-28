@@ -6,7 +6,11 @@ import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
 import * as api from '../api/api';
 import OrderProductCard from '../components/product/OrderProductCard';
+import { Card, Avatar } from 'antd';
 
+const image_payment = require('./../assets/payment.jpg');
+
+const { Meta } = Card;
 function OrderPage() {
   const dispatch = useDispatch();
   let products = useSelector((state) => state.webShop.products);
@@ -88,17 +92,24 @@ function OrderPage() {
       <div className="order-details-head">
         <h2>Košarica</h2>
       </div>
-      {renderProducts()}
-      <div className="order-details-payout">
-        <div className="polovica-prva">
-          <label className="order-details-label">Total to pay: {user.userProfileData ? calculateTotal() : '5'}</label>
-        </div>
-        <div className="polovica">
-          <Button variant="outline-success" onClick={() => doCheckout()}>
-            Checkout
-          </Button>
-        </div>
+      <div className="order-details-body">
+        <Card title="Plaćanje" style={{ width: 1000 }}>
+          <div className="polovica">
+            <label className="order-details-label">Total to pay: {user.userProfileData ? calculateTotal() : '5'}</label>
+          </div>
+
+          <div className="polovica-desno">
+            <img className=" order-photo-image" style={{ float: 'right' }} src={image_payment} />
+          </div>
+
+          <div className="polovica">
+            <Button variant="outline-success" style={{ marginTop: '130px' }} onClick={() => doCheckout()}>
+              Kupi
+            </Button>
+          </div>
+        </Card>
       </div>
+      {renderProducts()}
     </div>
   );
 }

@@ -39,11 +39,13 @@ function ProductDetailsPage(props) {
     if (productK && !error) {
       return productK.reviews.map((r) => (
         <div className="razmak">
-          <Card className="review-card" title={r.title} style={{ width: 300 }}>
-            <p className="review-card-ocjena" style={{ color: 'C31D67' }}>
+          <Card className="review-card" title={r.title} style={{ width: 300, fontWeight: 'bold' }}>
+            <p className="review-card-ocjena" style={{ fontWeight: 'normal' }}>
               Ocjena: {r.reviewRating}
             </p>
-            <p className="opis">Opis: {r.title}</p>
+            <p className="opis" style={{ fontWeight: 'normal' }}>
+              Opis: {r.title}
+            </p>
           </Card>
         </div>
       ));
@@ -179,13 +181,8 @@ function ProductDetailsPage(props) {
 
           <label className="product-details-body-left-description-item-title">Ocjena:</label>
           <br></br>
-          <Select className="product-details-footer-grade" style={{ position: 'static' }} onChange={onSelectionChange}>
-            <option value={1}>Nedovoljan</option>
-            <option value={2}>Dovoljan</option>
-            <option value={3}>Dobar</option>
-            <option value={4}>Vrlo dobar</option>
-            <option value={5}>Odličan</option>
-          </Select>
+
+          <Input type="number" className="product-details-footer-grade" onChange={onSelectionChange}></Input>
           <br></br>
           <label className="product-detail-footer-h5">Naslov:</label>
           <br></br>

@@ -7,6 +7,12 @@
   padding: 90px 20px 20px 320px;
   width: 100vw;
 
+  &-body {
+    margin-top: 4px;
+    display: flex;
+    width: 100%;
+  }
+
   &-head {
     display: flex;
     width: 100%;
@@ -21,9 +27,13 @@
       align-items: center;
     }
 
-    // &-payout{
-
-    //}
+    &-payout {
+      margin: 10px;
+      position: static;
+      height: fit-content;
+      height: 150px;
+      width: 150px;
+    }
 
     h1 {
       margin: 0;
@@ -32,7 +42,29 @@
 }
 
 .polovica-prva {
-  height: 50%;
+  height: 20px;
   font-weight: normal;
   align-items: center;
+}
+.polovica-desna {
+  height: 20px;
+  font-weight: normal;
+
+  float: right;
+}
+
+.order-photo {
+  &-card {
+    margin: 10px;
+    text-align: center;
+    width: 220px;
+    height: fit-content;
+
+    &-image {
+      display: block;
+      margin-left: 60px;
+      margin-right: auto;
+      width: 50%;
+    }
+  }
 }
