@@ -47,23 +47,29 @@ function GetAllProductsAdminPage() {
   };
 
   return (
-    <div className="home">
-      <div>
-        <h2>Administrator</h2>
-        <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allproducts')}>
-          Pregledaj svoje proizvode
-        </Button>
-        <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/createproduct')}>
-          Dodaj novi proizvod
-        </Button>
-
-        <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allusers')}>
-          Dohvati sve usere
-        </Button>
-
-        <br></br>
+    <div className="security-details">
+      <div className="security-details-head">
+        <h2>Administrator </h2>
       </div>
-      <div className="admin-home">{renderProducts()}</div>
+      <div className="locker row">
+        <div className="col" style={{ position: 'static' }}>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allproducts')}>
+            Svi proizvodi
+          </Button>
+        </div>
+
+        <div className="col" style={{ position: 'static' }}>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/createproduct')}>
+            Dodaj proizvod
+          </Button>
+        </div>
+        <div className="col" style={{ position: 'static' }}>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allusers')}>
+            Popis korisnika
+          </Button>
+        </div>
+      </div>
+      <div className="admin-products">{renderProducts()}</div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Avatar } from 'antd';
 import { InfoCircleOutlined, ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
+import Button from 'react-bootstrap/Button';
 
 const { Meta } = Card;
 export default function AdminProductCard(props) {
@@ -19,12 +20,12 @@ export default function AdminProductCard(props) {
         />
       }
       actions={[
-        <button class="btn btn-primary" onClick={() => window.location.replace(`/admin/editproduct/${productId}`)}>
+        <Button variant="outline-primary" onClick={() => window.location.replace(`/admin/editproduct/${productId}`)}>
           Uredi
-        </button>,
-        <button class="btn btn-danger" onClick={() => deleteProductCallback(productId)}>
-          X
-        </button>,
+        </Button>,
+        <Button variant="outline-danger" onClick={() => deleteProductCallback(productId)}>
+          Izbriši
+        </Button>,
       ]}
     >
       <Meta
