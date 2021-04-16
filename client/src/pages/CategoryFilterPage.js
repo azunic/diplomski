@@ -16,6 +16,16 @@ function CategoryFilterPage() {
 
   let log = useSelector((state) => state);
 
+  useEffect(() => {
+    console.log('hereeee');
+    dispatch(actions.fetchCategories());
+  }, []);
+
+  useEffect(() => {
+    console.log('hereeee');
+    dispatch(actions.fetchProducts());
+  }, []);
+
   const onWishlistClick = (productId) => {
     //console.log(user && `${user.username}`)
     let lista = user.userProfileData.wishListedProducts;
@@ -45,55 +55,38 @@ function CategoryFilterPage() {
     return user.userProfileData.wishListedProducts.includes(product._id);
   };
 
-  useEffect(() => {
-    console.log('hereeee');
-    dispatch(actions.fetchCategories());
-  }, []);
-
-  useEffect(() => {
-    console.log('hereeee');
-    dispatch(actions.fetchProducts());
-  }, []);
-
   const renderProducts = () => {
     console.log(logme);
     if (products && !error && user.userProfileData.wishListedProducts) {
-      {
-        console.log(logme);
+      console.log(logme);
+      console.log(categoryId);
+      if (categoryId != undefined) {
         console.log(categoryId);
-        if (categoryId != undefined) {
-          console.log(categoryId);
-          categories = categories.filter((category) => category.productCategory == categoryId);
-          console.log(categories);
-          console.log(products);
-          products = products.filter((product) =>
-            product.productSubCategory != undefined
-              ? categories.find((category) => category._id === product.productSubCategory) != undefined
-              : false,
-          );
+        console.log(categories);
+        console.log(products);
+        products = products.filter((product) => product.productSubCategory === categoryId);
 
-          return products.map((p) => (
-            <ProductCard
-              key={p._id}
-              productId={p._id}
-              name={p.name}
-              image={p.image}
-              brandName={p.brand.name}
-              brandImage={p.brand.imageUrl}
-              wishlisted={isWishlisted(p)}
-              wishlistCallback={onWishlistClick}
-            />
-          ));
-        }
+        return products.map((p) => (
+          <ProductCard
+            key={p._id}
+            productId={p._id}
+            name={p.name}
+            image={p.image}
+            brandName={p.brand.name}
+            brandImage={p.brand.imageUrl}
+            wishlisted={isWishlisted(p)}
+            wishlistCallback={onWishlistClick}
+          />
+        ));
       }
-
-      return <div>No products</div>;
     }
 
-    return (
-      <div className="home">{categories === null || user.userProfileData === null ? 'Loading' : renderProducts()}</div>
-    );
+    return <div>No products</div>;
   };
+
+  return (
+    <div className="home">{categories === null || user.userProfileData === null ? 'Loading' : renderProducts()}</div>
+  );
 }
 
 export default CategoryFilterPage;

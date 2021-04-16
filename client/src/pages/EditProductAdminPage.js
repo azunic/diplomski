@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
 import * as api from '../api/api';
-import { ButtonGroup } from 'react-bootstrap';
+import { ButtonGroup, Button, Container } from 'react-bootstrap';
+import { Select, List, Input } from 'antd';
+import { Card } from 'antd';
 
 function EditProductAdminPage() {
   const dispatch = useDispatch();
+  let categories = useSelector((state) => state.webShop.categories);
   let { productId } = useParams();
   let products = useSelector((state) => state.webShop.products);
   const error = useSelector((state) => state.webShop.errorFetchProducts);
@@ -84,6 +87,13 @@ function EditProductAdminPage() {
     console.log(brand);
   };
 
+  const categoryChange = (e) => {
+    console.log(e);
+    setProduct({ ...product, productSubCategory: e.target.value });
+    console.log(product);
+    console.log(category);
+  };
+
   const priceChange = (e) => {
     console.log(e);
     setProduct({ ...product, price: e.target.value });
@@ -105,9 +115,10 @@ function EditProductAdminPage() {
           <div>
             <div>
               <label>Ime proizvoda:</label>
-              <input type="text" id="ime" value={product.name} onChange={nameChange}></input>
+              <Input type="text" id="ime" value={product.name} onChange={nameChange}></Input>
             </div>
             <div>
+              <br></br>
               <label>Brend:</label>
               <select id="brend" value={product.brand} onChange={brandChange}>
                 {user.brands.map((brand) => (
@@ -118,26 +129,42 @@ function EditProductAdminPage() {
               </select>
             </div>
             <div>
+              <br></br>
+              <label>Category:</label>
+              <select id="category" value={product.productSubCategory} onChange={categoryChange}>
+                {user.categories.map((category) => (
+                  <option key={category.value} value={category._id}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <br></br>
               <label>URL slike proizvoda:</label>
-              <input type="text" id="image" value={product.image} onChange={imageChange}></input>
+              <Input type="text" id="image" value={product.image} onChange={imageChange}></Input>
             </div>
-
             <div>
+              <br></br>
               <label>Opis proizvoda:</label>
-              <input type="text" id="description" value={product.details} onChange={descriptionChange}></input>
+              <Input type="text" id="description" value={product.details} onChange={descriptionChange}></Input>
             </div>
-
             <div>
+              <br></br>
               <label>Sastojci proizvoda:</label>
-              <input type="text" id="details" value={product.ingredients} onChange={ingredientsChange}></input>
+              <Input type="text" id="details" value={product.ingredients} onChange={ingredientsChange}></Input>
             </div>
-
             <div>
+              <br></br>
               <label>Cijena proizvoda:</label>
-              <input type="text" id="details" value={product.price} onChange={priceChange}></input>
+              <Input type="text" id="details" value={product.price} onChange={priceChange}></Input>
             </div>
+            <br></br>
             <div>
-              <button onClick={createProduct}>Potvrdi</button>
+              <Button variant="outline-success" onClick={createProduct}>
+                Potvrdi
+              </Button>
             </div>
           </div>
         );
@@ -148,17 +175,38 @@ function EditProductAdminPage() {
   };
 
   return (
-    <div className="home">
-      <div>
-        <h2>Administrator</h2>
-        <button onClick={() => document.location.replace('/admin/allproducts')}>Pregledaj svoje proizvode</button>
-        <button onClick={() => document.location.replace('/admin/createproduct')}>Dodaj novi proizvod</button>
+    <div>
+      <div className="security-details">
+        <div className="security-details-head">
+          <h2>Prodajni štand </h2>
+        </div>
+        <div className="locker row">
+          <div className="col" style={{ position: 'static' }}>
+            <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allproducts')}>
+              Pregledaj sve proizvode
+            </Button>
+          </div>
 
-        <button onClick={() => document.location.replace('/user/allusers')}>Dohvati sve usere</button>
+          <div className="col" style={{ position: 'static' }}>
+            <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/createproduct')}>
+              Dodaj novi proizvod
+            </Button>
+          </div>
+          <div className="col" style={{ position: 'static' }}>
+            <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allusers')}>
+              Pregledaj sve korisnike
+            </Button>
+          </div>
+        </div>
 
         <br></br>
       </div>
-      {renderCreateForm()}
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className="page">
+        <Container>{renderCreateForm()}</Container>
+      </div>
     </div>
   );
 }

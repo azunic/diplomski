@@ -7,9 +7,59 @@ export default function SideDrawerListItem(props) {
   const submenuGoToFunction = (name) => {
     let id = '';
     if (name === 'Muški mirisi') {
-      id = '5fecf0f5e9d36532b44440a6';
+      id = '5fecfa89d1fc6e13b8d80849';
     } else if (name === 'Ženski mirisi') {
       id = '5fafc161f797bd3670ef1cb1';
+    } else if (name === 'Unisex mirisi') {
+      id = '5fecf0e3e9d36532b44440a5';
+    } else if (name === 'Trepavice') {
+      id = '5fecefffe9d36532b444409a';
+    } else if (name === 'Toaletna torbica') {
+      id = '5fecf014e9d36532b444409b';
+    } else if (name === 'Pribor') {
+      id = '5fecf02ee9d36532b444409c';
+    } else if (name === 'Šiljila') {
+      id = '5fecf04ae9d36532b444409d';
+    } else if (name === 'Nokti') {
+      id = '5fecf056e9d36532b444409e';
+    } else if (name === 'Ogledala') {
+      id = '5fecf061e9d36532b444409f';
+    } else if (name === 'Kistovi') {
+      id = '5fecf061e9d36532b444409f';
+    } else if (name === 'Torbe') {
+      id = '5fecf061e9d36532b444409f';
+    } else if (name === 'Setovi') {
+      id = '5fecf083e9d36532b44440a2';
+    } else if (name === 'Pincete') {
+      id = '5fecf08fe9d36532b44440a3';
+    } else if (name === 'Maske za lice') {
+      id = '5fecf0a4e9d36532b44440a4';
+    } else if (name === 'Njega tijela') {
+      id = '5fecf14be9d36532b44440a7';
+    } else if (name === 'Muška njega') {
+      id = '5fecf20fe9d36532b44440a8';
+    } else if (name === 'Njega kose') {
+      id = '5fecf24ce9d36532b44440a9';
+    } else if (name === 'Styling') {
+      id = '5fecf258e9d36532b44440aa';
+    } else if (name === 'Šamponi') {
+      id = '5fecf26ae9d36532b44440ab';
+    } else if (name === 'Regeneratori') {
+      id = '5fecf278e9d36532b44440ac';
+    } else if (name === 'Boje za kosu') {
+      id = '5fecf284e9d36532b44440ad';
+    } else if (name === 'Oči') {
+      id = '5fecf2d5e9d36532b44440ae';
+    } else if (name === 'Lice') {
+      id = '5fecf2dee9d36532b44440af';
+    } else if (name === 'Usne') {
+      id = '5fecf2e4e9d36532b44440b0';
+    } else if (name === 'Nokti') {
+      id = '5fecf30be9d36532b44440b1';
+    } else if (name === 'Njega ruku i nogu ') {
+      id = '5fecf42de9d36532b44440b8';
+    } else if (name === 'Higijenski proizvodi') {
+      id = '5fecf741d1fc6e13b8d80831';
     }
 
     if (id != '') {

@@ -17,7 +17,8 @@ export const BRANDS = 'api/brands';
 
 // categories
 // zakomentirano za prvu ruku export const CATEGORIES = 'api/categories';
-export const CATEGORIES = 'api/product-sub-categories';
+//export const CATEGORIES = 'api/product-sub-categories';
+export const CATEGORIES = 'api/product-categories';
 
 export const USERS = 'api/users';
 

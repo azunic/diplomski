@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import AdminProductCard from '../components/product/AdminProductCard';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
 import * as api from '../api/api';
 import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 
 function GetAllUsersAdminPage() {
   const dispatch = useDispatch();
@@ -35,21 +35,21 @@ function GetAllUsersAdminPage() {
       console.log(logme);
       return users.map((user) => (
         <div>
-          <label>Mail:</label>
-          <label>{user.email}</label>
-          <br></br>
-          <label>Username: </label>
-          <label>{user.username}</label>
-          <br></br>
-          <label>Ime: </label>
-          <label>{user.firstName}</label>
-          <br></br>
-          <label>Prezime: </label>
-          <label>{user.lastName}</label>
-          <br></br>
-          <button className="btn btn-danger" onClick={() => deleteUser(user._id)}>
-            Izbrisi korisnika
-          </button>
+          <Table striped bordered hover>
+            <tbody>
+              <tr>
+                <td>{user.email}</td>
+                <td>{user.username}</td>
+                <td>{user.firstName}</td>
+                <td>{user.lastName}</td>
+                <td>
+                  <button className="btn btn-danger" onClick={() => deleteUser(user._id)}>
+                    Izbrisi korisnika
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </Table>
         </div>
       ));
     }
