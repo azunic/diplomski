@@ -24,7 +24,7 @@ import EditProductAdminPage from './pages/EditProductAdminPage';
 import GetAllProductsAdminPage from './pages/GetAllProductsAdminPage';
 import GetAllUsersAdminPage from './pages/GetAllUsersAdminPage';
 import OrderPage from './pages/OrderPage';
-
+import Notifications from './pages/Notifications';
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignup();
@@ -56,6 +56,7 @@ class App extends Component {
         <Route exact path="/admin/allusers" component={GetAllUsersAdminPage} />
         <Route exact path="/locker/addproduct" component={CreateProductPage} />
         <Route exact path="/order" component={OrderPage} />
+        <Route exact path="/notifications" component={Notifications} />
         <Route path="*" component={NotExistPage} />
       </Switch>
     );

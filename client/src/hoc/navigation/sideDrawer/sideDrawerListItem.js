@@ -54,12 +54,20 @@ export default function SideDrawerListItem(props) {
       id = '5fecf2dee9d36532b44440af';
     } else if (name === 'Usne') {
       id = '5fecf2e4e9d36532b44440b0';
-    } else if (name === 'Nokti') {
-      id = '5fecf30be9d36532b44440b1';
     } else if (name === 'Njega ruku i nogu ') {
       id = '5fecf42de9d36532b44440b8';
     } else if (name === 'Higijenski proizvodi') {
       id = '5fecf741d1fc6e13b8d80831';
+    } else if (name === 'Setovi') {
+      id = '5fecf5cbe9d36532b44440c4';
+    } else if ((name = 'Parfemi')) {
+      id = '5fafc161f797bd3670ef1cb1';
+    } else if ((name = 'Mirisi')) {
+      id = '5fecf6b2d1fc6e13b8d8082e';
+    } else if ((name = 'Kolonjske vode')) {
+      id = '5fecf645d1fc6e13b8d8082c';
+    } else if ((name = 'Nokti')) {
+      id = '5fed02f67d3bc022549c53f7';
     }
 
     if (id != '') {

@@ -18,7 +18,9 @@ function Login(props) {
   const goToSignup = () => {
     props.history.push('/signup');
   };
-  const goToForgotPassword = () => {};
+  const goToForgotPassword = () => {
+    this.setState({ forgot: true });
+  };
 
   const errorModal = () => {
     Modal.error({
@@ -30,6 +32,15 @@ function Login(props) {
     });
   };
 
+  const successModal = () => {
+    Modal.success({
+      title: 'OK',
+      content: error,
+      onOk() {
+        dispatch(actions.registerSuccess());
+      },
+    });
+  };
   return (
     <div className="auth-form">
       <div className="auth-form-wrapper">
