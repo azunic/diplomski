@@ -7,6 +7,7 @@ const PRODUCT_CATEGORIES = [
   'Pribor',
   'Šiljila',
   'Nokti',
+  'Ogledala',
   'Kistovi',
   'Torbe',
   'Setovi',
