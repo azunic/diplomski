@@ -15,7 +15,7 @@ function ProfileMenuItem(props) {
         </div>
         {hasNotification ? (
           <div className="profile-menu-row-notifications">
-            <div className="profile-menu-row-notifications-nbubble">{notificationCounter}</div>
+            <div className="profile-menu-row-notifications-nbubble">0</div>
           </div>
         ) : (
           <div className="profile-menu-row-notifications">&nbsp;</div>

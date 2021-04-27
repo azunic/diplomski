@@ -89,9 +89,9 @@ function SideDrawer(props) {
             </span>{' '}
             proizvoda
           </li>
-          <li className="sidedrawer-footer-list-item">
+          <li className="sidedrawer-footer-list-item" style={{ color: 'white' }}>
             {/* A JSX comment */}
-            <span className="sidedrawer-footer-list-item-count">1</span> Zamjene
+            <span className="sidedrawer-footer-list-item-count" style={{ color: 'white' }}></span> Zamjene
           </li>
         </ul>
         <div className="sidedrawer-footer-link" onClick={() => menuGoToFunction('profile')}>

@@ -33,6 +33,21 @@ function GetAllUsersAdminPage() {
   const renderUsers = () => {
     if (!error && users) {
       console.log(logme);
+
+      return users.map((user) => (
+        <tr>
+          <td>{user.email}</td>
+          <td>{user.username}</td>
+          <td>{user.firstName}</td>
+          <td>{user.lastName}</td>
+          <td>
+            <button className="btn btn-danger" onClick={() => deleteUser(user._id)}>
+              Izbrisi korisnika
+            </button>
+          </td>
+        </tr>
+      ));
+      /*
       return users.map((user) => (
         <div>
           <Table striped bordered hover>
@@ -51,7 +66,7 @@ function GetAllUsersAdminPage() {
             </tbody>
           </Table>
         </div>
-      ));
+      ));*/
     }
 
     return <div>No users</div>;
@@ -75,7 +90,19 @@ function GetAllUsersAdminPage() {
           </Button>
         </div>
       </div>
-      <div className="admin-products">{renderUsers()}</div>
+      <div className="admin-products">
+        {' '}
+        <Table striped bordered hover>
+          <tr>
+            <th>Email</th>
+            <th>korisnik</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Izbrisi</th>
+          </tr>
+          <tbody>{renderUsers()}</tbody>
+        </Table>
+      </div>
     </div>
   );
 }

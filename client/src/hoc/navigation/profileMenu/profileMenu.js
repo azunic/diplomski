@@ -24,7 +24,7 @@ function ProfileMenu(props) {
         icon="notification"
         text="Notifications"
         hasNotification={true}
-        notificationCounter="135"
+        notificationCounter="1"
         navOnClick={() => navGoToFunction('Notifications')}
       />
       <ProfileMenuItem icon="profile" text="Profile" navOnClick={() => navGoToFunction('Profile')} />
