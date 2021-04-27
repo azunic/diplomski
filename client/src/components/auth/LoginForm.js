@@ -9,6 +9,7 @@ import * as actions from '../../store/actions/index';
 function Login(props) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
+  const success = useSelector((state) => state.auth.succes);
 
   const onFinish = (values) => {
     props.history.push('/home');

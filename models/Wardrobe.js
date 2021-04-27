@@ -9,7 +9,6 @@ const wardrobeSchema = new mongoose.Schema(
     category: { type: String },
     descriptions: { type: String },
     email: { type: String },
-    mobilephone: { type: String, required: true },
     price: { type: Number, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },

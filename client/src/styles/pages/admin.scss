@@ -21,3 +21,12 @@
   padding: 10px 10px 10px 40px;
   width: 80vw;
 }
+
+.admin-table {
+  box-sizing: border-box;
+  color: $black;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding: 10px 10px 10px 40px;
+}

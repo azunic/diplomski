@@ -4,7 +4,6 @@ export const ACCESSORIES_EXPANDABLE_ITEMS = [
   'Pribor',
   'Šiljila',
   'Nokti',
-  'Ogledala',
   'Kistovi',
   'Torbe',
   'Setovi',

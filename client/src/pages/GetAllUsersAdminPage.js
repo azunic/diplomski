@@ -36,10 +36,10 @@ function GetAllUsersAdminPage() {
 
       return users.map((user) => (
         <tr>
-          <td>{user.email}</td>
-          <td>{user.username}</td>
-          <td>{user.firstName}</td>
-          <td>{user.lastName}</td>
+          <td style={{ fontWeight: 'normal' }}>{user.email}</td>
+          <td style={{ fontWeight: 'normal' }}>{user.username}</td>
+          <td style={{ fontWeight: 'normal' }}>{user.firstName}</td>
+          <td style={{ fontWeight: 'normal' }}>{user.lastName}</td>
           <td>
             <button className="btn btn-danger" onClick={() => deleteUser(user._id)}>
               Izbrisi korisnika
@@ -90,15 +90,15 @@ function GetAllUsersAdminPage() {
           </Button>
         </div>
       </div>
-      <div className="admin-products">
+      <div className="admin-table">
         {' '}
         <Table striped bordered hover>
           <tr>
-            <th>Email</th>
-            <th>korisnik</th>
+            <th>E-mail</th>
+            <th>Username</th>
             <th>Ime</th>
             <th>Prezime</th>
-            <th>Izbrisi</th>
+            <th>Akcija</th>
           </tr>
           <tbody>{renderUsers()}</tbody>
         </Table>

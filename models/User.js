@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema(
     role: { type: String },
     gender: { type: String, enum: Object.values(constants.GENDERS) },
     username: { type: String, required: true },
-    addresses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Address' }],
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
     cart: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' },
 
@@ -25,6 +24,7 @@ const userSchema = new mongoose.Schema(
     WardrobeProducts: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wardrobe' }],
     },
+
     orderedProducts: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
     },

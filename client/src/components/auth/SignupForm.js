@@ -18,8 +18,10 @@ const tailLayout = {
 function Signup(props) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
+  const success = useSelector((state) => state.auth.succes);
 
   const onFinish = (values) => {
+    successModal();
     console.log('Success:', values);
     const { firstName, lastName, email, password, repeatPassword, username } = values;
     dispatch(actions.authRegister(firstName, lastName, email, password, repeatPassword, username));
@@ -35,6 +37,15 @@ function Signup(props) {
       content: error,
       onOk() {
         dispatch(actions.errorConfirmed());
+      },
+    });
+  };
+  const successModal = () => {
+    Modal.success({
+      title: 'Uspješno ste se registrirali! ',
+      content: success,
+      onOk() {
+        dispatch(actions.registerSuccess());
       },
     });
   };
