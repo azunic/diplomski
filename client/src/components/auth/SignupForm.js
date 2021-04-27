@@ -50,6 +50,13 @@ function Signup(props) {
     });
   };
 
+  const forgotModal = () => {
+    Modal.success({
+      title: 'Na vas mail je poslan reset lozinke ! ',
+      content: 'success',
+    });
+  };
+
   return (
     <div className="auth-form">
       <div className="auth-form-wrapper">

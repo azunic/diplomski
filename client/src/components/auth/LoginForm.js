@@ -20,9 +20,15 @@ function Login(props) {
     props.history.push('/signup');
   };
   const goToForgotPassword = () => {
-    this.setState({ forgot: true });
+    reset();
+    // this.setState({ forgot: true });
   };
 
+  function reset() {
+    Modal.success({
+      content: 'Poslan je reset lozinke na Vaš mail!',
+    });
+  }
   const errorModal = () => {
     Modal.error({
       title: 'Login failed',
