@@ -11,10 +11,13 @@ import { Select, List } from 'antd';
 import { Card } from 'antd';
 import ProductCard from '../components/product/ProductCard';
 
+import { InfoCircleOutlined, ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
+
 function ProductDetailsPage(props) {
   const dispatch = useDispatch();
   const productK = useSelector((state) => state.webShop.product);
   const error = useSelector((state) => state.webShop.errorFetchProduct);
+  let user = useSelector((state) => state.webShop);
   const { TextArea } = Input;
   let { productId } = useParams();
 
@@ -24,6 +27,7 @@ function ProductDetailsPage(props) {
   const isReview = 'false';
   let imageUrl = '';
   //console.log('Product', product);
+
   const product = productId;
   console.log('ProductK', JSON.stringify(product));
   useEffect(() => {
@@ -34,6 +38,56 @@ function ProductDetailsPage(props) {
   if (!productK) {
     return null;
   }
+
+  const addToShoppingCart = (productId) => {
+    //console.log(user && `${user.username}`)
+    let lista = user.userProfileData.orderedProducts;
+
+    console.log(lista.length);
+
+    user.userProfileData.orderedProducts.push(product);
+
+    console.log(lista.length);
+    var response = api.updateUser(user.userProfileData);
+    response.then(function (result) {
+      console.log(result);
+      console.log(user.userProfileData.orderedProducts);
+      console.log('tu tutut ');
+      window.location.reload();
+    });
+  };
+
+  const onWishlistClick = (productId) => {
+    //console.log(user && `${user.username}`)
+    let lista = user.userProfileData.wishListedProducts;
+
+    var wishlistButton = document.getElementById('btnWishList');
+
+    console.log(lista.length);
+
+    console.log(product);
+    if (isWishlisted(product) === true) {
+      const index = lista.indexOf(productId);
+      if (index > -1) {
+        user.userProfileData.wishListedProducts.splice(index, 1);
+        wishlistButton.innerHTML = 'Stavite na popis zelja';
+      }
+    } else {
+      lista.push(product);
+      wishlistButton.innerHTML = 'Uklonite s popisa zelja';
+    }
+
+    console.log(lista.length);
+    api.updateUser(user.userProfileData);
+    window.location.reload();
+  };
+
+  const isWishlisted = (product) => {
+    console.log(user.userProfileData.wishListedProducts.includes(product._id));
+    console.log(user.userProfileData.wishListedProducts);
+    console.log(product);
+    return user.userProfileData.wishListedProducts.includes(product._id);
+  };
 
   const getReviews = () => {
     if (productK && !error) {
@@ -133,14 +187,15 @@ function ProductDetailsPage(props) {
           </div>
 
           <div className="product-details-body-right-buy">
-            <button> Dodajte u košaricu</button>
+            <button onClick={() => addToShoppingCart(productId)}> Dodajte u košaricu</button>
           </div>
-          <div className="product-details-body-right-wishlist">
-            <div className="material-icons product-details-body-right-wishlist-icon">favorite_border</div>
-            <div>
-              <a href="#">Stavite na popis želja</a>
-            </div>
+
+          <div className="product-details-body-right-buy">
+            <button id="btnWishList" onClick={() => onWishlistClick(productId)}>
+              Stavite na popis zelja
+            </button>
           </div>
+
           <div className="product-details-body-right-delivery">
             <div className="material-icons product-details-body-right-delivery-icon">help_outline</div>
             <div>Besplatna dostava</div>
