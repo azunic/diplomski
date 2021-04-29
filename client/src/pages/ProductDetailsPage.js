@@ -191,8 +191,8 @@ function ProductDetailsPage(props) {
           </div>
 
           <div className="product-details-body-right-buy">
-            <button id="btnWishList" onClick={() => onWishlistClick(productId)}>
-              Stavite na popis zelja
+            <button style={{ backgroundColor: '#ff66cc' }} id="btnWishList" onClick={() => onWishlistClick(productId)}>
+              Stavite na popis želja
             </button>
           </div>
 

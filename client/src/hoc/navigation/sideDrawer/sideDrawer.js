@@ -87,7 +87,7 @@ function SideDrawer(props) {
             <span className="sidedrawer-footer-list-item-count">
               {userProfileData && `${userProfileData.ownedProducts.length}`}
             </span>{' '}
-            proizvoda
+            proizvod
           </li>
           <li className="sidedrawer-footer-list-item" style={{ color: 'white' }}>
             {/* A JSX comment */}

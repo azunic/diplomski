@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema(
     orderedProducts: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
     },
+    purchasedProducts: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+    },
   },
   { timestamps: true },
 );
