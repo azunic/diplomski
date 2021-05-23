@@ -5,7 +5,7 @@ import getIcon from '../../utils/iconsLoader';
 import { withRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/index';
-
+//na 80 liniji postoji forgot password smao je zakomentiran zbog mailguna jer je trial verzija ali radi
 function Login(props) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
@@ -76,9 +76,7 @@ function Login(props) {
                 </Form.Item>
               </Col>
               <Col xs={{ span: 12 }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Button type="link" onClick={goToForgotPassword} style={{ paddingTop: 0, paddingBottom: 0 }}>
-                  Forgot password
-                </Button>
+                <Button type="link" onClick={goToForgotPassword} style={{ paddingTop: 0, paddingBottom: 0 }}></Button>
               </Col>
             </Row>
           </Form.Item>

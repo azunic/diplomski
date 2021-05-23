@@ -34,6 +34,7 @@ router.get('/:id', async (req, res) => {
       price: product.price,
       details: product.details,
       ingredients: product.ingredients,
+      soldtimes: product.soldtimes === null || product.soldtimes === undefined ? 0 : product.soldtimes,
       variants: [...product.productVariant],
       brand: {
         _id: productBrand._id,
@@ -56,7 +57,7 @@ router.post('/', async (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    const { name, image, productVariant, productSubCategory, brand, details, ingredients, price } = req.body;
+    const { name, image, productVariant, productSubCategory, brand, details, ingredients, price, soldtimes } = req.body;
     const newProducts = Products({
       name,
       image,
@@ -66,6 +67,7 @@ router.post('/', async (req, res) => {
       productSubCategory,
       brand,
       price,
+      soldtimes,
     });
     const newProduct = await newProducts.save();
     console.log('after save newProduct', newProduct);

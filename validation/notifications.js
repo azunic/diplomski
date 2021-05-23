@@ -5,11 +5,11 @@ const validationMessages = require('../constants/validation');
 function validateNotifications(data) {
   const errors = {};
 
-  if (Validator.isEmpty(data.notificationsType)) {
-    errors.notificationsType = validationMessages.notificationsTypeIsInvalid;
+  if (Validator.isEmpty(data.notificationType)) {
+    errors.notificationType = validationMessages.notificationsTypeIsInvalid;
   }
 
-  data.notificationsTitle = !isEmpty(data.notificationsTitle) ? data.notificationsTitle : '';
+  //data.notificationsTitle = !isEmpty(data.notificationsTitle) ? data.notificationsTitle : '';
   if (Validator.isEmpty(data.notificationTitle)) {
     errors.notificationTitle = validationMessages.notificationTitleisInvalid;
   }

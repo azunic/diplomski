@@ -7,16 +7,11 @@ const PRODUCT_CATEGORIES = [
   'Pribor',
   'Šiljila',
   'Nokti',
-  'Ogledala',
   'Kistovi',
   'Torbe',
   'Setovi',
   'Pincete',
-  'Kosa',
-  'Blenderi',
-  'Dom',
   'Maske za lice',
-  'Kozmetičke kutije',
 
   // Mirisi
   'Ženski mirisi',
@@ -162,7 +157,7 @@ const PRODUCT_SUBCATEGORIES = [
 ];
 
 const NOTIFICATION_TYPES = ['PRODUCT_BUY_REQUEST', 'WISHLISTED_PRODUCT_ON_SALE'];
-const NOTIFICATION_TITLES = ['SALE', 'NEW COLLECTION'];
+//const NOTIFICATION_TITLES = ['SALE', 'NEW COLLECTION'];
 const GENDERS = ['Muški', 'Ženski', 'Drugo'];
 
 module.exports = Object.freeze({
@@ -171,6 +166,6 @@ module.exports = Object.freeze({
   PRODUCT_CATEGORIES,
   PRODUCT_SUBCATEGORIES,
   NOTIFICATION_TYPES,
-  NOTIFICATION_TITLES,
+
   GENDERS,
 });

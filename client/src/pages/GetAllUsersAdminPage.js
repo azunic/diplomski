@@ -85,8 +85,18 @@ function GetAllUsersAdminPage() {
         </div>
 
         <div className="col" style={{ position: 'static' }}>
-          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/createproduct')}>
-            Dodaj proizvod
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/statistics')}>
+            Statistika proizvoda
+          </Button>
+        </div>
+        <div className="col" style={{ position: 'static' }}>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/notifications')}>
+            Unesi Obavijest
+          </Button>
+        </div>
+        <div className="col" style={{ position: 'static' }}>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allproducts')}>
+            Svi proizvodi
           </Button>
         </div>
       </div>

@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import AdminProductCard from '../components/product/AdminProductCard';
+import StatisticsProductCard from '../components/product/StatisticsProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as actions from '../store/actions';
 import * as api from '../api/api';
 import Button from 'react-bootstrap/Button';
-
-function GetAllProductsAdminPage() {
+function ProductStatisticsAdminPage() {
   const dispatch = useDispatch();
   let products = useSelector((state) => state.webShop.products);
   const error = useSelector((state) => state.webShop.errorFetchProducts);
@@ -31,14 +30,14 @@ function GetAllProductsAdminPage() {
         products = products.filter((product) => product.brand._id === brandId);
       }
       return products.map((p) => (
-        <AdminProductCard
+        <StatisticsProductCard
           key={p._id}
           productId={p._id}
           name={p.name}
           image={p.image}
           brandName={p.brand.name}
           brandImage={p.brand.imageUrl}
-          deleteProductCallback={deleteProduct}
+          noorders={p.soldtimes === undefined || p.soldtimes === null ? 0 : p.soldtimes}
         />
       ));
     }
@@ -53,6 +52,12 @@ function GetAllProductsAdminPage() {
       </div>
       <div className="locker row">
         <div className="col" style={{ position: 'static' }}>
+          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allproducts')}>
+            Svi proizvodi
+          </Button>
+        </div>
+
+        <div className="col" style={{ position: 'static' }}>
           <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/createproduct')}>
             Dodaj proizvod
           </Button>
@@ -62,11 +67,7 @@ function GetAllProductsAdminPage() {
             Popis korisnika
           </Button>
         </div>
-        <div className="col" style={{ position: 'static' }}>
-          <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/statistics')}>
-            Statistika proizvoda
-          </Button>
-        </div>
+
         <div className="col" style={{ position: 'static' }}>
           <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/notifications')}>
             Pošalji obavijest
@@ -78,4 +79,4 @@ function GetAllProductsAdminPage() {
   );
 }
 
-export default GetAllProductsAdminPage;
+export default ProductStatisticsAdminPage;

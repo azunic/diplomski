@@ -166,7 +166,17 @@ function CreateProductAdminPage() {
           </div>
           <div className="col" style={{ position: 'static' }}>
             <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/allusers')}>
-              Dohvati sve korisnike
+              Pregled korisnika
+            </Button>
+          </div>
+          <div className="col" style={{ position: 'static' }}>
+            <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/statistics')}>
+              Statistika
+            </Button>
+          </div>
+          <div className="col" style={{ position: 'static' }}>
+            <Button variant="outline-secondary" onClick={() => document.location.replace('/admin/notifications')}>
+              Obavijesti
             </Button>
           </div>
         </div>

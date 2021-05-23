@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema(
     price: { type: String, required: true },
     details: { type: String },
     ingredients: { type: String },
+    soldtimes: { type: Number, required: false },
     reviews: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
     },

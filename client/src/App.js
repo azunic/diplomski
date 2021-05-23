@@ -23,8 +23,11 @@ import CreateProductAdminPage from './pages/CreateProductAdminPage';
 import EditProductAdminPage from './pages/EditProductAdminPage';
 import GetAllProductsAdminPage from './pages/GetAllProductsAdminPage';
 import GetAllUsersAdminPage from './pages/GetAllUsersAdminPage';
+import GetNotificationsPage from './pages/GetNotificationsPage';
+import SendNotificationAdminPage from './pages/SendNotificationAdminPage';
 import OrderPage from './pages/OrderPage';
-import Notifications from './pages/Notifications';
+import ProductStatisticsAdminPage from './pages/ProductStatisticsAdminPage';
+
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignup();
@@ -50,13 +53,17 @@ class App extends Component {
         <Route exact path="/products/category/:categoryId" component={CategoryFilterPage} />
         <Route exact path="/locker/all" component={LockerAllProductsPage} />
         <Route exact path="/locker" component={LockerPage} />
+        <Route exact path="/admin/statistics" component={ProductStatisticsAdminPage} />
+        <Route exact path="/notifications" component={GetNotificationsPage} />
         <Route exact path="/admin/createproduct" component={CreateProductAdminPage} />
         <Route exact path="/admin/editproduct/:productId" component={EditProductAdminPage} />
         <Route exact path="/admin/allproducts" component={GetAllProductsAdminPage} />
         <Route exact path="/admin/allusers" component={GetAllUsersAdminPage} />
         <Route exact path="/locker/addproduct" component={CreateProductPage} />
         <Route exact path="/order" component={OrderPage} />
-        <Route exact path="/notifications" component={Notifications} />
+
+        <Route exact path="/admin/notifications" component={SendNotificationAdminPage} />
+
         <Route path="*" component={NotExistPage} />
       </Switch>
     );

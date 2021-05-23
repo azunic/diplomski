@@ -54,6 +54,14 @@ function OrderPage() {
   };
 
   const doCheckout = () => {
+    var myproducts = [];
+    user.userProfileData.orderedProducts.forEach((product) =>
+      products.filter((np) => (np._id === product ? myproducts.push(np) : myproducts)),
+    );
+    myproducts.forEach((p) => (p.soldtimes = p.soldtimes + 1));
+    myproducts.forEach((p) => console.log(p));
+    myproducts.forEach((p) => api.updateProduct(p));
+
     user.userProfileData.orderedProducts = [];
     api.updateUser(user.userProfileData);
     document.location.replace('/home');

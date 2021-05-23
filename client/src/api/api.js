@@ -10,6 +10,7 @@ import {
   USERS,
   WARDROBE,
   POST,
+  NOTIFICATIONS,
 } from './apiRoutes';
 
 const getToken = () => {
@@ -90,4 +91,13 @@ export const updateProduct = async (product) => {
 
 export const deleteProduct = async (productId) => {
   return await axios.delete(`${PRODUCTS}/${productId}`, getToken());
+};
+
+export const createNotification = async (notification) => {
+  return await axios.post(NOTIFICATIONS, notification);
+};
+
+export const fetchNotifications = async () => {
+  console.log('called notifications');
+  return await axios.get(NOTIFICATIONS, getToken());
 };

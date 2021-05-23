@@ -28,14 +28,16 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { errors, isValid } = validateNotifications(req.body);
+
     if (!isValid) {
       return res.status(400).json(errors);
     }
 
     const newNotifications = Notifications({
-      notificationsType: req.body.notificationType,
+      notificationType: req.body.notificationType,
       notificationTitle: req.body.notificationTitle,
     });
+    console.log(newNotifications);
     await newNotifications.save();
     res.send(newNotifications);
   } catch (err) {

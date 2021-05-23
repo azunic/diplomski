@@ -22,3 +22,5 @@ export const CATEGORIES = 'api/product-categories';
 export const USERS = 'api/users';
 export const WARDROBE = 'api/wardrobe';
 export const POST = 'api/post';
+
+export const NOTIFICATIONS = 'api/notifications';
